@@ -51,7 +51,7 @@ deactivate
 
 Make sure Jave is already installed!
 
-Download the GPL v2 version of the compiled jar PlantUML generator from https://plantuml.com/ to the script folder
+Download the GPL v2 version of the compiled jar PlantUML generator from [https://plantuml.com](https://plantuml.com/download)/ to the script folder
 
 ### 4. Install required Python Packages
 
