@@ -366,7 +366,7 @@ class UMLModelGenerator:
 
     def generate_svgs(self, scripts: dict):
         output_dir = 'output'
-        plantuml_jar_path = os.path.join(os.getcwd(), 'plantuml-gplv2-1.2024.6.jar')  # Path to the jar file in the project root
+        plantuml_jar_path = os.path.join(os.getcwd(), 'plantuml-gplv2-1.2024.7.jar')  # Path to the jar file in the project root
 
         for pakke_name in scripts.keys():
             puml_file_path = os.path.join(output_dir, f"{pakke_name}.puml")

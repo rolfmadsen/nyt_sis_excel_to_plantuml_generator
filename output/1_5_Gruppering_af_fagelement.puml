@@ -1,0 +1,10 @@
+@startuml 1_5_Gruppering_af_fagelement
+Title 1_5_Gruppering_af_fagelement
+hide empty members
+skinparam linetype ortho
+skinparam class {
+    BackgroundColor<<enum>> #lightgreen
+}
+
+!includesub main.puml!1_5_Gruppering_af_fagelement
+@enduml

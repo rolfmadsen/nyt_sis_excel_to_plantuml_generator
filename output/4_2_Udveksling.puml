@@ -1,0 +1,10 @@
+@startuml 4_2_Udveksling
+Title 4_2_Udveksling
+hide empty members
+skinparam linetype ortho
+skinparam class {
+    BackgroundColor<<enum>> #lightgreen
+}
+
+!includesub main.puml!4_2_Udveksling
+@enduml

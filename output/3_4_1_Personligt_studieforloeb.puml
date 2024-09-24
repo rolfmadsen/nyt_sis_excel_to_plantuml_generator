@@ -1,0 +1,10 @@
+@startuml 3_4_1_Personligt_studieforloeb
+Title 3_4_1_Personligt_studieforloeb
+hide empty members
+skinparam linetype ortho
+skinparam class {
+    BackgroundColor<<enum>> #lightgreen
+}
+
+!includesub main.puml!3_4_1_Personligt_studieforloeb
+@enduml

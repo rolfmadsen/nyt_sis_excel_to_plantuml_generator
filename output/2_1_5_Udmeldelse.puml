@@ -1,0 +1,10 @@
+@startuml 2_1_5_Udmeldelse
+Title 2_1_5_Udmeldelse
+hide empty members
+skinparam linetype ortho
+skinparam class {
+    BackgroundColor<<enum>> #lightgreen
+}
+
+!includesub main.puml!2_1_5_Udmeldelse
+@enduml

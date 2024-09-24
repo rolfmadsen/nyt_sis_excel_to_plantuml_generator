@@ -1,0 +1,10 @@
+@startuml 3_7_Bevis
+Title 3_7_Bevis
+hide empty members
+skinparam linetype ortho
+skinparam class {
+    BackgroundColor<<enum>> #lightgreen
+}
+
+!includesub main.puml!3_7_Bevis
+@enduml

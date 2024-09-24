@@ -1,0 +1,10 @@
+@startuml 2_1_1_1_Uddannelsesbaggrund
+Title 2_1_1_1_Uddannelsesbaggrund
+hide empty members
+skinparam linetype ortho
+skinparam class {
+    BackgroundColor<<enum>> #lightgreen
+}
+
+!includesub main.puml!2_1_1_1_Uddannelsesbaggrund
+@enduml

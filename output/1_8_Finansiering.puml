@@ -1,0 +1,10 @@
+@startuml 1_8_Finansiering
+Title 1_8_Finansiering
+hide empty members
+skinparam linetype ortho
+skinparam class {
+    BackgroundColor<<enum>> #lightgreen
+}
+
+!includesub main.puml!1_8_Finansiering
+@enduml

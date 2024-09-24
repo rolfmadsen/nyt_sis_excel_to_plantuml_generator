@@ -1,0 +1,10 @@
+@startuml 1_4_2_Proeve
+Title 1_4_2_Proeve
+hide empty members
+skinparam linetype ortho
+skinparam class {
+    BackgroundColor<<enum>> #lightgreen
+}
+
+!includesub main.puml!1_4_2_Proeve
+@enduml

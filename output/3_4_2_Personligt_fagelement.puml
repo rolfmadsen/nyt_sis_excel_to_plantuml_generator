@@ -1,0 +1,10 @@
+@startuml 3_4_2_Personligt_fagelement
+Title 3_4_2_Personligt_fagelement
+hide empty members
+skinparam linetype ortho
+skinparam class {
+    BackgroundColor<<enum>> #lightgreen
+}
+
+!includesub main.puml!3_4_2_Personligt_fagelement
+@enduml

@@ -34,7 +34,7 @@ Activate the virtual environment. The command to activate the virtual environmen
 
 - **Windows**:
   ```bash
-  venv\Scripts\activate
+  .venv\Scripts\python
   ```
 - **macOS/Linux**:
   ```bash
@@ -52,6 +52,8 @@ deactivate
 Make sure Jave is already installed!
 
 Download the GPL v2 version of the compiled jar PlantUML generator from [https://plantuml.com/download](https://plantuml.com/download)/ to the script folder
+
+NB. Currently the script in main.py is set to use plantuml-gplv2-1.2024.7.jar.
 
 ### 4. Install required Python Packages
 

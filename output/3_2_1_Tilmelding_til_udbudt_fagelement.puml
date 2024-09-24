@@ -1,0 +1,10 @@
+@startuml 3_2_1_Tilmelding_til_udbudt_fagelement
+Title 3_2_1_Tilmelding_til_udbudt_fagelement
+hide empty members
+skinparam linetype ortho
+skinparam class {
+    BackgroundColor<<enum>> #lightgreen
+}
+
+!includesub main.puml!3_2_1_Tilmelding_til_udbudt_fagelement
+@enduml

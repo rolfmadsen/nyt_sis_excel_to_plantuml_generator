@@ -1,0 +1,10 @@
+@startuml 1_3_2_Studieforloebets_fagelementer
+Title 1_3_2_Studieforloebets_fagelementer
+hide empty members
+skinparam linetype ortho
+skinparam class {
+    BackgroundColor<<enum>> #lightgreen
+}
+
+!includesub main.puml!1_3_2_Studieforloebets_fagelementer
+@enduml

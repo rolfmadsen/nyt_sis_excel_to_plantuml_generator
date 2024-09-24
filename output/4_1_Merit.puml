@@ -1,0 +1,10 @@
+@startuml 4_1_Merit
+Title 4_1_Merit
+hide empty members
+skinparam linetype ortho
+skinparam class {
+    BackgroundColor<<enum>> #lightgreen
+}
+
+!includesub main.puml!4_1_Merit
+@enduml

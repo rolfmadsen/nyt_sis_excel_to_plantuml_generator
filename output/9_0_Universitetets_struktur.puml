@@ -1,0 +1,10 @@
+@startuml 9_0_Universitetets_struktur
+Title 9_0_Universitetets_struktur
+hide empty members
+skinparam linetype ortho
+skinparam class {
+    BackgroundColor<<enum>> #lightgreen
+}
+
+!includesub main.puml!9_0_Universitetets_struktur
+@enduml

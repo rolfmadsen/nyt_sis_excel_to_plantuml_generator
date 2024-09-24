@@ -1,0 +1,10 @@
+@startuml 3_6_Bedoemmelse
+Title 3_6_Bedoemmelse
+hide empty members
+skinparam linetype ortho
+skinparam class {
+    BackgroundColor<<enum>> #lightgreen
+}
+
+!includesub main.puml!3_6_Bedoemmelse
+@enduml

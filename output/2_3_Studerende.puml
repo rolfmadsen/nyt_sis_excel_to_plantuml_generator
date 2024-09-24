@@ -1,0 +1,10 @@
+@startuml 2_3_Studerende
+Title 2_3_Studerende
+hide empty members
+skinparam linetype ortho
+skinparam class {
+    BackgroundColor<<enum>> #lightgreen
+}
+
+!includesub main.puml!2_3_Studerende
+@enduml

@@ -1,0 +1,10 @@
+@startuml 1_7_1_Udbudt_videregaaende_uddannelse
+Title 1_7_1_Udbudt_videregaaende_uddannelse
+hide empty members
+skinparam linetype ortho
+skinparam class {
+    BackgroundColor<<enum>> #lightgreen
+}
+
+!includesub main.puml!1_7_1_Udbudt_videregaaende_uddannelse
+@enduml

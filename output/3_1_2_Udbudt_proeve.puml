@@ -1,0 +1,10 @@
+@startuml 3_1_2_Udbudt_proeve
+Title 3_1_2_Udbudt_proeve
+hide empty members
+skinparam linetype ortho
+skinparam class {
+    BackgroundColor<<enum>> #lightgreen
+}
+
+!includesub main.puml!3_1_2_Udbudt_proeve
+@enduml

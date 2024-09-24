@@ -1,0 +1,10 @@
+@startuml 2_1_3_Indskrivning
+Title 2_1_3_Indskrivning
+hide empty members
+skinparam linetype ortho
+skinparam class {
+    BackgroundColor<<enum>> #lightgreen
+}
+
+!includesub main.puml!2_1_3_Indskrivning
+@enduml

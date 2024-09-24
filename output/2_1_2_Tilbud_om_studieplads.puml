@@ -1,0 +1,10 @@
+@startuml 2_1_2_Tilbud_om_studieplads
+Title 2_1_2_Tilbud_om_studieplads
+hide empty members
+skinparam linetype ortho
+skinparam class {
+    BackgroundColor<<enum>> #lightgreen
+}
+
+!includesub main.puml!2_1_2_Tilbud_om_studieplads
+@enduml

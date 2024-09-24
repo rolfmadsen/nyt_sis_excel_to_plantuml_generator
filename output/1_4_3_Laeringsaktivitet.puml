@@ -1,0 +1,10 @@
+@startuml 1_4_3_Laeringsaktivitet
+Title 1_4_3_Laeringsaktivitet
+hide empty members
+skinparam linetype ortho
+skinparam class {
+    BackgroundColor<<enum>> #lightgreen
+}
+
+!includesub main.puml!1_4_3_Laeringsaktivitet
+@enduml

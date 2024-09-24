@@ -1,0 +1,10 @@
+@startuml 3_2_2_Proevetilmelding
+Title 3_2_2_Proevetilmelding
+hide empty members
+skinparam linetype ortho
+skinparam class {
+    BackgroundColor<<enum>> #lightgreen
+}
+
+!includesub main.puml!3_2_2_Proevetilmelding
+@enduml
