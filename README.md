@@ -94,7 +94,7 @@ After generating the `sis_informationmodel.puml` file, you can create different 
 To run a local web server that allows you to view the UML diagrams in your browser, use the following command:
 
 ```bash
-java -jar plantuml-gplv2-1.2024.4.jar -picoweb
+java -jar plantuml-gplv2-1.2024.7.jar -picoweb
 ```
 
 This will start a PicoWeb server on your machine, and you can access it by navigating to `http://localhost:8080` in your browser.
@@ -104,7 +104,7 @@ This will start a PicoWeb server on your machine, and you can access it by navig
 To generate an SVG image of the UML diagram, run:
 
 ```bash
-java -jar plantuml-gplv2-1.2024.4.jar -svg sis_informationmodel.puml -charset UTF-8
+java -jar plantuml-gplv2-1.2024.7.jar -svg sis_informationmodel.puml -charset UTF-8
 ```
 
 This will produce a high-quality SVG image of your UML diagram, encoded in UTF-8.
