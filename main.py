@@ -366,18 +366,22 @@ class UMLModelGenerator:
 
     def generate_svgs(self, scripts: dict):
         output_dir = 'output'
-        plantuml_jar_path = os.path.join(os.getcwd(), 'plantuml-gplv2-1.2024.7.jar')  # Path to the jar file in the project root
+        plantuml_jar_path = os.path.join(os.getcwd(), 'plantuml-gplv2-1.2024.6.jar')  # Path to the jar file
 
         for pakke_name in scripts.keys():
             puml_file_path = os.path.join(output_dir, f"{pakke_name}.puml")
             svg_file_path = os.path.join(output_dir, f"{pakke_name}.svg")
 
-            subprocess.run([
+            result = subprocess.run([
                 'java', '-jar', plantuml_jar_path,
-                '-svg', puml_file_path,
+                '-tsvg', puml_file_path,
                 '-charset', 'UTF-8'
-            ])
-            logging.info(f"Generated SVG for '{pakke_name}' and saved to '{svg_file_path}'")
+            ], capture_output=True, text=True)
+
+            if result.returncode != 0:
+                logging.error(f"Error generating SVG for '{pakke_name}': {result.stderr}")
+            else:
+                logging.info(f"Generated SVG for '{pakke_name}' and saved to '{svg_file_path}'")
 
 if __name__ == "__main__":
     UMLModelGenerator().run()
