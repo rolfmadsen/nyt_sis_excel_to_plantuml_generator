@@ -7,36 +7,36 @@ skinparam class {
 }
 
 !startsub 1_2_Videregaaende_uddannelse
-class VideregåendeUddannelse {
+class VideregÃ¥endeUddannelse {
   fagbetegnelse: ? [[1..1]]
   /grad: Calculated [[1..1]]
-  tilrettelæggelsesform: PicklistMulti [[1..2]]
+  tilrettelÃ¦ggelsesform: PicklistMulti [[1..2]]
   normeretStudietid: Number.1 [[1..*]]
   ECTS-point: Number.1 [[1..*]]
   optagelseskode: Text80 [[0..*]]
   aktivitetsgruppekode: Text80 [[1..*]]
-  uddannelsesbetegnelseLatinHankøn: ? [[1..1]]
+  uddannelsesbetegnelseLatinHankÃ¸n: ? [[1..1]]
   uddannelsesbetegnelseDansk: ? [[1..1]]
   uddannelsesbetegnelseEngelsk: ? [[1..1]]
   uddannelsestype: PicklistMulti [[1..*]]
   uddannelsesKaldenavn: Text80 [[0..1]]
   uddannelsessystem: Picklist [[1..1]]
-  uddannelsesbetegnelseLatinHunkøn: ? [[1..1]]
+  uddannelsesbetegnelseLatinHunkÃ¸n: ? [[1..1]]
   sidsteStudiestartsdato: Date [[0..1]]
   /uddannelsesniveau: Calculated [[1..1]]
   /taxameterindplacering: Calculated [[1..*]]
   godkendtSprog: Picklist [[1..1]]
-  læringsudbytte: ? [[1..1]]
-  erElæringsuddannelse: Checkbox [[1..1]]
+  lÃ¦ringsudbytte: ? [[1..1]]
+  erElÃ¦ringsuddannelse: Checkbox [[1..1]]
   <<BK>>
   uddannelsesId: AutoNum [[1..1]]
 }
 
-class Fagområde {
-  videnskabeligtHovedområde: Picklist [[1..1]]
-  fagområdenavn: Text80 [[1..1]]
+class FagomrÃ¥de {
+  videnskabeligtHovedomrÃ¥de: Picklist [[1..1]]
+  fagomrÃ¥denavn: Text80 [[1..1]]
   <<BK>>
-  fagområdekode: AutoNum [[1..1]]
+  fagomrÃ¥dekode: AutoNum [[1..1]]
 }
 
 class UddannelsesansvarligEnhed {
@@ -108,12 +108,12 @@ enum UddannelsestypeEnum <<enum>> {
   akademiskOverbygningsuddannelse.akademiskErhvervsuddannelse
 }
 
-enum TilrettelæggelsesformEnum <<enum>> {
-  påHeltid
-  påDeltid
+enum TilrettelÃ¦ggelsesformEnum <<enum>> {
+  pÃ¥Heltid
+  pÃ¥Deltid
 }
 
-enum VidenskabeligtHovedområdeEnum <<enum>> {
+enum VidenskabeligtHovedomrÃ¥deEnum <<enum>> {
   teologi
   naturvidenskab
   humaniora
@@ -123,7 +123,7 @@ enum VidenskabeligtHovedområdeEnum <<enum>> {
 }
 
 enum UddannelsessystemEnum <<enum>> {
-  ordinæreUddannelsessystem
+  ordinÃ¦reUddannelsessystem
   efter-OgVidereuddannelsessystemet
 }
 
@@ -139,47 +139,47 @@ enum GradEnum <<enum>> {
   ph.d.-grad
 }
 
-VideregåendeUddannelse "0..*" --  "1..*" Fagområde : hører under
-UdbudtVideregåendeUddannelse "0..*" --  "1" VideregåendeUddannelse : udbud af
+VideregÃ¥endeUddannelse "0..*" --  "1..*" FagomrÃ¥de : hÃ¸rer under
+UdbudtVideregÃ¥endeUddannelse "0..*" --  "1" VideregÃ¥endeUddannelse : udbud af
 UddannelsesansvarligEnhed "0..*" --  "1" OrgEnhed : ansvarlig enhed
-VideregåendeUddannelse "1" --  "1..*" Studieordning
-VideregåendeUddannelse "0..*" --  "1..*" GodkendtUdbudssted : godkendt til udbud ved
-UddannelsesansvarligEnhed "1..*" --  "1" VideregåendeUddannelse
-StudieforløbFagelementgruppering "0..*" --  "0..1" Fagområde : henføres til
-VideregåendeUddannelse "0..*" --  "1" Censorkorps : ansvarligt censorkorps
+VideregÃ¥endeUddannelse "1" --  "1..*" Studieordning
+VideregÃ¥endeUddannelse "0..*" --  "1..*" GodkendtUdbudssted : godkendt til udbud ved
+UddannelsesansvarligEnhed "1..*" --  "1" VideregÃ¥endeUddannelse
+StudieforlÃ¸bFagelementgruppering "0..*" --  "0..1" FagomrÃ¥de : henfÃ¸res til
+VideregÃ¥endeUddannelse "0..*" --  "1" Censorkorps : ansvarligt censorkorps
 AdgangsgivendeUddannelse "0..*" --  "1" Uddannelse
 Uddannelse "0..*" --  "0..*" Uddannelsesinstitution : samarbejdspartner
-VideregåendeUddannelse "0..*" --  "1" Universitet : udbyder
-Fagelement "0..*" --  "0..1" VideregåendeUddannelse : defineret i
+VideregÃ¥endeUddannelse "0..*" --  "1" Universitet : udbyder
+Fagelement "0..*" --  "0..1" VideregÃ¥endeUddannelse : defineret i
 UddannelsesansvarligPerson "0..*" --  "0..1" OrgPerson
-UddannelsesansvarligPerson "0..*" --  "1" VideregåendeUddannelse
-VideregåendeUddannelse "0..*" --  "0..*" Censorkorps : tværfakultært censorkorps
+UddannelsesansvarligPerson "0..*" --  "1" VideregÃ¥endeUddannelse
+VideregÃ¥endeUddannelse "0..*" --  "0..*" Censorkorps : tvÃ¦rfakultÃ¦rt censorkorps
 UddannelsesansvarligPerson "0..*" --  "0..1" Medlemskab
 RegisterRegistrering "0..*" --  "1" InstitutionsRegister
 Uddannelsesinstitution "1" --  "0..*" RegisterRegistrering
-VideregåendeUddannelse "1" --  "0..*" TidligereOptag
+VideregÃ¥endeUddannelse "1" --  "0..*" TidligereOptag
 DanskInstitutionsRegisterRegistrering "0..*" --  "0..1" DanskInstitutionsRegisterRegistrering : hovedinstitution
 RegisterRegistrering "1" --  "0..1" GodkendtUdbudssted
 DanskInstitutionsRegisterRegistrering "0..*" --  "0..1" DanskAdresse
-VideregåendeUddannelse --|>  Uddannelse
+VideregÃ¥endeUddannelse --|>  Uddannelse
 GymnasialUddannelse --|>  Uddannelse
 DanskInstitutionsRegisterRegistrering --|>  RegisterRegistrering
-VideregåendeUddannelse .right.>  UddannelsestypeEnum
-VideregåendeUddannelse .right.>  TilrettelæggelsesformEnum
-Fagområde .right.>  VidenskabeligtHovedområdeEnum
-VideregåendeUddannelse .right.>  UddannelsessystemEnum
+VideregÃ¥endeUddannelse .right.>  UddannelsestypeEnum
+VideregÃ¥endeUddannelse .right.>  TilrettelÃ¦ggelsesformEnum
+FagomrÃ¥de .right.>  VidenskabeligtHovedomrÃ¥deEnum
+VideregÃ¥endeUddannelse .right.>  UddannelsessystemEnum
 UddannelsesansvarligEnhed .right.>  OrgEnhedAnsvarsrolleEnum
-VideregåendeUddannelse .right.>  GradEnum
-VideregåendeUddannelse .right.>  UddannelsesniveauEnum
-VideregåendeUddannelse .right.>  SprogEnum
+VideregÃ¥endeUddannelse .right.>  GradEnum
+VideregÃ¥endeUddannelse .right.>  UddannelsesniveauEnum
+VideregÃ¥endeUddannelse .right.>  SprogEnum
 UddannelsesansvarligPerson .right.>  OrgPersonAnsvarsrolleEnum
 !endsub
 
 !startsub 1_3_1_Studieordning
 class Studieordning {
   overgangsbestemmelse: ? [[1..1]]
-  studieordningsikrafttrædelsesdato: Date [[1..1]]
-  studieordningsophørsdato: Date [[0..1]]
+  studieordningsikrafttrÃ¦delsesdato: Date [[1..1]]
+  studieordningsophÃ¸rsdato: Date [[0..1]]
   studieordningshjemmel: ? [[1..1]]
   adgangskrav: ? [[1..1]]
   studieordningsbeskrivelse: TekstLong [[1..1]]
@@ -187,22 +187,22 @@ class Studieordning {
   studieordningskode: AutoNum [[1..1]]
 }
 
-class Studieforløb {
+class StudieforlÃ¸b {
   maksimalStudietid: Number.0 [[1..1]]
   ECTS-point: Number.1 [[1..1]]
   normeretStudietid: Number.1 [[1..1]]
-  studieforløbsnavn: Text80 [[1..1]]
-  studieforløbsbeskrivelse: TekstLong [[1..1]]
-  studieforløbstype: Picklist [[1..1]]
+  studieforlÃ¸bsnavn: Text80 [[1..1]]
+  studieforlÃ¸bsbeskrivelse: TekstLong [[1..1]]
+  studieforlÃ¸bstype: Picklist [[1..1]]
   afsluttendeUddannelseskode: Text80 [[1..1]]
   fagprofilTitelEngelsk: Text80 [[0..1]]
   fagprofilTitelDansk: Text80 [[0..1]]
   kompetenceprofilDansk: ? [[1..1]]
   kompetenceprofilEngelsk: ? [[1..1]]
   sidsteUdbudsdato: Date [[0..1]]
-  medPropædeutik: Checkbox [[1..1]]
+  medPropÃ¦deutik: Checkbox [[1..1]]
   <<BK>>
-  studieforløbskode: AutoNum [[1..1]]
+  studieforlÃ¸bskode: AutoNum [[1..1]]
 }
 
 class Studieordningsregel {
@@ -214,97 +214,97 @@ class Studieordningsregel {
 }
 
 class DiplomaSupplement {
-  erhvervsmæssigStatus: Checkbox [[1..1]]
+  erhvervsmÃ¦ssigStatus: Checkbox [[1..1]]
   karakterbeskrivelse: TekstLong [[1..1]]
   uddannelsesdetaljer: ? [[1..1]]
   uddannelsesinstitutionStatusOgAkkreditering: ? [[1..1]]
   undervisningsOgEksamenssprog: ? [[1..1]]
   videreuddannelseNiveau: ? [[1..1]]
   <<BK>>
-  /studieforløbskode: IgnoreBK [[1..1]]
+  /studieforlÃ¸bskode: IgnoreBK [[1..1]]
 }
 
-class Studieforløbsperiode {
-  studieforløbsperiodenavn: Text80 [[1..1]]
-  studieforløbsperiodeOmfang: Number.1 [[1..1]]
+class StudieforlÃ¸bsperiode {
+  studieforlÃ¸bsperiodenavn: Text80 [[1..1]]
+  studieforlÃ¸bsperiodeOmfang: Number.1 [[1..1]]
   <<BK>>
-  studieforløbsperiodeRækkefølgeNr: ? [[1..1]]
-  /studieforløbskode: IgnoreBK [[1..1]]
+  studieforlÃ¸bsperiodeRÃ¦kkefÃ¸lgeNr: ? [[1..1]]
+  /studieforlÃ¸bskode: IgnoreBK [[1..1]]
 }
 
 class AdgangsgivendeUddannelse {
   medRetskrav: Checkbox [[1..1]]
 }
 
-class Forløbsprøve {
-  forløbsprøvetype: Picklist [[1..1]]
-  beståelsesfrist: Date [[1..1]]
+class ForlÃ¸bsprÃ¸ve {
+  forlÃ¸bsprÃ¸vetype: Picklist [[1..1]]
+  bestÃ¥elsesfrist: Date [[1..1]]
   <<BK>>
-  /studieforløbskode: IgnoreBK [[1..1]]
-  forløbsprøvenr: ? [[1..1]]
+  /studieforlÃ¸bskode: IgnoreBK [[1..1]]
+  forlÃ¸bsprÃ¸venr: ? [[1..1]]
 }
 
-enum StudieforløbstypeEnum <<enum>> {
+enum StudieforlÃ¸bstypeEnum <<enum>> {
   delAfSidefag
-  fællesuddannelse
-  standardforløb
+  fÃ¦llesuddannelse
+  standardforlÃ¸b
   delAfTilvalg
   to-fagliguddannelse
   akademiskErhvervsoverbygning
   deltidstilrettelagt
   erhvervskandidat
-  fagprofilforløb
+  fagprofilforlÃ¸b
 }
 
 enum StudieordningsregeltypeEnum <<enum>> {
-  tidsgrænseregel
+  tidsgrÃ¦nseregel
   tilmeldingsregel
-  prøveresultatregel
+  prÃ¸veresultatregel
   optagelsesregel
-  planlægningsregel
-  beståregel
-  forudsætningsregel
+  planlÃ¦gningsregel
+  bestÃ¥regel
+  forudsÃ¦tningsregel
 }
 
-enum ForløbsprøvetypeEnum <<enum>> {
-  førsteårsprøve
-  studiestartsprøve
+enum ForlÃ¸bsprÃ¸vetypeEnum <<enum>> {
+  fÃ¸rsteÃ¥rsprÃ¸ve
+  studiestartsprÃ¸ve
 }
 
 Studieordningsregel "1..*" --  "1" Studieordning
-Studieforløb "1..*" --  "1" Studieordning
-UdbudtVideregåendeUddannelse "0..*" --  "1" Studieordning : udbudt studieordning
-VideregåendeUddannelse "1" --  "1..*" Studieordning
-IndskrivningTilVideregåendeUddannelse "0..*" --  "1" Studieordning : indskrevet til
-IndskrivningTilVideregåendeUddannelse "0..*" --  "0..1" Studieforløb : valgt forløb
-Studieforløb "1" --  "0..*" StudieforløbFagelementgruppering
-Studieforløb "0..1" --  "0..*" GrupperingAfFagelement : sidefag / tilvalg indlånt til
-Studieforløb "1" --  "1..*" Studieforløbsperiode : opdelt i
-Studieforløbsperiode "1" --  "0..*" FagelementgrupperingIStudieforløbsperiode
-Studieforløbsperiode "1" --  "0..*" FagelementIStudieforløbsperiode
+StudieforlÃ¸b "1..*" --  "1" Studieordning
+UdbudtVideregÃ¥endeUddannelse "0..*" --  "1" Studieordning : udbudt studieordning
+VideregÃ¥endeUddannelse "1" --  "1..*" Studieordning
+IndskrivningTilVideregÃ¥endeUddannelse "0..*" --  "1" Studieordning : indskrevet til
+IndskrivningTilVideregÃ¥endeUddannelse "0..*" --  "0..1" StudieforlÃ¸b : valgt forlÃ¸b
+StudieforlÃ¸b "1" --  "0..*" StudieforlÃ¸bFagelementgruppering
+StudieforlÃ¸b "0..1" --  "0..*" GrupperingAfFagelement : sidefag / tilvalg indlÃ¥nt til
+StudieforlÃ¸b "1" --  "1..*" StudieforlÃ¸bsperiode : opdelt i
+StudieforlÃ¸bsperiode "1" --  "0..*" FagelementgrupperingIStudieforlÃ¸bsperiode
+StudieforlÃ¸bsperiode "1" --  "0..*" FagelementIStudieforlÃ¸bsperiode
 AdgangsgivendeUddannelse "0..*" --  "1" Uddannelse
 Studieordning "1" --  "1..*" AdgangsgivendeUddannelse : giver adgang til 
-StudieforløbFagelement "1..*" --  "1" Studieforløb
-Studieforløb "1" --  "0..*" Forløbsprøve
-PersonligForløbsprøve "0..*" --  "1" Forløbsprøve
+StudieforlÃ¸bFagelement "1..*" --  "1" StudieforlÃ¸b
+StudieforlÃ¸b "1" --  "0..*" ForlÃ¸bsprÃ¸ve
+PersonligForlÃ¸bsprÃ¸ve "0..*" --  "1" ForlÃ¸bsprÃ¸ve
 Studieordningsregel "0..*" --  "0..*" Studiedispensation
-Studieforløb "1" --  "1" DiplomaSupplement
-Studieforløb "1" --  "0..*" UdbudtStudieforløb
-Studieforløb .right.>  StudieforløbstypeEnum
+StudieforlÃ¸b "1" --  "1" DiplomaSupplement
+StudieforlÃ¸b "1" --  "0..*" UdbudtStudieforlÃ¸b
+StudieforlÃ¸b .right.>  StudieforlÃ¸bstypeEnum
 Studieordningsregel .right.>  StudieordningsregeltypeEnum
-Forløbsprøve .right.>  ForløbsprøvetypeEnum
+ForlÃ¸bsprÃ¸ve .right.>  ForlÃ¸bsprÃ¸vetypeEnum
 !endsub
 
 !startsub 1_4_1_Fagelement
 class Fagelement {
   ECTS-point: Number.1 [[1..1]]
-  læringsmål: ? [[1..1]]
+  lÃ¦ringsmÃ¥l: ? [[1..1]]
   fagelementnavn: Text80 [[1..1]]
   udbudsfrekvens: ? [[1..1]]
   aktivitetsgruppekode: Text80 [[1..1]]
   uddannelsesniveau: Calculated [[0..1]]
   afviklingssprog: Picklist [[1..1]]
-  erRessourceudløsende: Checkbox [[1..1]]
+  erRessourceudlÃ¸sende: Checkbox [[1..1]]
   sidsteUdbudsDato: Date [[0..1]]
   fagelementtype: Picklist [[1..1]]
   kontraktSkalUdarbejdes: ? [[1..1]]
@@ -334,7 +334,7 @@ class FagelementansvarligPerson {
   /fagelementkode: IgnoreBK [[1..1]]
 }
 
-class ÆkvivalerendeFaglighed {
+class Ã†kvivalerendeFaglighed {
   <<BK>>
   /fagelementkode: IgnoreBK [[1..1]]
 }
@@ -357,30 +357,30 @@ enum AfsluttendeOpgavetypeEnum <<enum>> {
 enum FagelementTypeEnum <<enum>> {
   Projektopgave
   Praktik
-  ProjektorienteretForløb
+  ProjektorienteretForlÃ¸b
   FagspecifiktKursus
   KortKursus
   Kursus
-  SærskiltModul
-  IndtægtdækketVirksomhedskursus
+  SÃ¦rskiltModul
+  IndtÃ¦gtdÃ¦kketVirksomhedskursus
   AfsluttendeOpgave
   SupplerendeECTS
 }
 
-Læringsaktivitet "0..*" --  "1" Fagelement
-Prøve "1" --  "1" Fagelement
+LÃ¦ringsaktivitet "0..*" --  "1" Fagelement
+PrÃ¸ve "1" --  "1" Fagelement
 Fagelement "1" --  "0..*" UdbudtFagelement : udbudt som
 Fagelement "1" --  "0..*" FagelementansvarligEnhed : rolle
 FagelementansvarligPerson "0..*" --  "1" Fagelement : rolle
 Fagelement "0..*" --  "0..*" Fagelementemne
 FagelementansvarligPerson "0..*" --  "0..1" Ansat
 FagelementansvarligEnhed "0..*" --  "1" OrgEnhed
-ÆkvivalerendeFaglighed "0..1" --  "1" Fagelement : har 
+Ã†kvivalerendeFaglighed "0..1" --  "1" Fagelement : har 
 Fagelement "1" --  "0..*" PersonligtFagelement
 Fagelement "1" --  "0..*" FagelementIFagelementgruppering
 Fagelement "1" --  "0..*" OverlappendeFaglighed : med 
-StudieforløbFagelement "0..*" --  "1" Fagelement
-Fagelement "0..*" --  "0..1" VideregåendeUddannelse : defineret i
+StudieforlÃ¸bFagelement "0..*" --  "1" Fagelement
+Fagelement "0..*" --  "0..1" VideregÃ¥endeUddannelse : defineret i
 OverlappendeFaglighed "0..*" --  "1" Fagelement : har
 FagelementansvarligPerson "0..*" --  "0..1" Medlemskab
 Fagelement .right.>  SprogEnum
@@ -392,7 +392,7 @@ Fagelement .right.>  FagelementTypeEnum
 
 !startsub 1_5_Gruppering_af_fagelement
 class GrupperingAfFagelement {
-  fagelementgrupperingsformål: ? [[1..1]]
+  fagelementgrupperingsformÃ¥l: ? [[1..1]]
   fagelementgrupperingsnavn: Text80 [[1..1]]
   fagelementgrupperingstype: Picklist [[0..1]]
   prioriteringVedTilmelding: Number.0 [[1..1]]
@@ -401,8 +401,8 @@ class GrupperingAfFagelement {
 }
 
 class FagelementIFagelementgruppering {
-  rækkefølgePåBevis: ? [[0..1]]
-  medtagesPåBevis: Checkbox [[1..1]]
+  rÃ¦kkefÃ¸lgePÃ¥Bevis: ? [[0..1]]
+  medtagesPÃ¥Bevis: Checkbox [[1..1]]
   <<BK>>
   /fagelementgrupperingskode: IgnoreBK [[1..1]]
   /fagelementkode: IgnoreBK [[1..1]]
@@ -413,16 +413,16 @@ enum FagelementgrupperingstypeEnum <<enum>> {
   sidefag
   tilvalgsfag
   fagpakke
-  propædeutik
+  propÃ¦deutik
 }
 
 GrupperingAfFagelement "0..*" --  "0..*" GrupperingAfFagelement
 GrupperingAfFagelement "1" --  "0..*" PersonligFagelementgruppering
-GrupperingAfFagelement "1" --  "0..*" StudieforløbFagelementgruppering
+GrupperingAfFagelement "1" --  "0..*" StudieforlÃ¸bFagelementgruppering
 GrupperingAfFagelement "1" --  "0..*" FagelementIFagelementgruppering
 Fagelement "1" --  "0..*" FagelementIFagelementgruppering
-Studieforløb "0..1" --  "0..*" GrupperingAfFagelement : sidefag / tilvalg indlånt til
-StudieforløbFagelement "0..*" --  "0..1" FagelementIFagelementgruppering
+StudieforlÃ¸b "0..1" --  "0..*" GrupperingAfFagelement : sidefag / tilvalg indlÃ¥nt til
+StudieforlÃ¸bFagelement "0..*" --  "0..1" FagelementIFagelementgruppering
 GrupperingAfFagelement .right.>  FagelementgrupperingstypeEnum
 !endsub
 
@@ -431,13 +431,13 @@ class UdbudtFagelement {
   kapacitetMinimum: Number.0 [[0..1]]
   fagelementvarighed: Number.1 [[1..1]]
   kapacitetMaximum: Number.0 [[0..1]]
-  anbefaledeFagligeForudsætninger: ? [[0..1]]
+  anbefaledeFagligeForudsÃ¦tninger: ? [[0..1]]
   anbefaletLitteratur: ? [[0..1]]
   feedbackform: PicklistMulti [[0..*]]
   arbejdsbelastning: ? [[1..1]]
   fagligeKrav: ? [[0..1]]
   afviklingssprog: Picklist [[1..1]]
-  udvælgelseskriterier: ? [[0..1]]
+  udvÃ¦lgelseskriterier: ? [[0..1]]
   <<BK>>
   /fagelementkode: IgnoreBK [[1..1]]
   /udbudsperiodekode: IgnoreBK [[1..1]]
@@ -476,12 +476,12 @@ enum FeedbackformEnum <<enum>> {
 }
 
 UdbudtFagelement "0..*" --  "1" Udbudssted
-UdbudtLæringsaktivitet "0..*" --  "1" UdbudtFagelement
+UdbudtLÃ¦ringsaktivitet "0..*" --  "1" UdbudtFagelement
 Fagelement "1" --  "0..*" UdbudtFagelement : udbudt som
 UdbudtFagelement "1" --  "0..*" TilmeldingTilUdbudtFagelement : tilmeldt til
 UdbudtEnkeltfag "0..*" --  "1..*" UdbudtFagelement : udbudt som
 UdbudtFagelementansvarligEnhed "0..*" --  "1" UdbudtFagelement
-UdbudtFagelement "1" --  "1..*" UdbudtPrøve
+UdbudtFagelement "1" --  "1..*" UdbudtPrÃ¸ve
 UdbudtFagelement "0..*" --  "0..1" Skemagruppe
 UdbudtFagelement "1" --  "0..*" UdbudtFagelementansvarligPerson
 UdbudtFagelementansvarligEnhed "0..*" --  "1" OrgEnhed
@@ -497,10 +497,10 @@ UdbudtFagelementansvarligEnhed .right.>  OrgEnhedAnsvarsrolleEnum
 !startsub 3_2_1_Tilmelding_til_udbudt_fagelement
 class TilmeldingTilUdbudtFagelement {
   afgjortAf: ? [[1..1]]
-  afgørelsesdato: Date [[1..1]]
+  afgÃ¸relsesdato: Date [[1..1]]
   tilmeldingsstatus: Picklist [[1..1]]
   tilmeldingsprioritet: Number.0 [[0..1]]
-  tilmeldingsafvisningsårsag: Picklist [[0..1]]
+  tilmeldingsafvisningsÃ¥rsag: Picklist [[0..1]]
   anmodningstidspunkt: Number.1 [[1..1]]
   <<BK>>
   /fagelementkode: IgnoreBK [[1..1]]
@@ -512,7 +512,7 @@ class TilmeldingTilUdbudtFagelement {
 class FrameldingFraUdbudtFagelement {
   frameldingsdato: Date [[1..1]]
   frameldtAf: ? [[1..1]]
-  frameldingsårsag: Picklist [[1..1]]
+  frameldingsÃ¥rsag: Picklist [[1..1]]
   <<BK>>
   /fagelementkode: IgnoreBK [[1..1]]
   /udbudsperiode: IgnoreBK [[1..1]]
@@ -526,78 +526,78 @@ class Aftalegrundlag {
   vejledningsplan: ? [[0..1]]
   aftaleperiode: ? [[0..1]]
   praktiskeForhold: TekstLong [[0..1]]
-  lønnetPraktik: ? [[1..1]]
+  lÃ¸nnetPraktik: ? [[1..1]]
   fortrolighed: ? [[1..1]]
   aftaletype: Picklist [[1..1]]
   <<BK>>
   aftalegrundlagsnummer: AutoNum [[1..1]]
 }
 
-class TilmeldingTilUdbudtLæringsaktivitet {
+class TilmeldingTilUdbudtLÃ¦ringsaktivitet {
   tilmeldingsstatus: Picklist [[1..1]]
   <<BK>>
   /fagelementkode: IgnoreBK [[1..1]]
   /indskrivningsnummer: IgnoreBK [[1..1]]
   /udbudsperiodekode: IgnoreBK [[1..1]]
   /udbudsstedskode: IgnoreBK [[1..1]]
-  /læringsaktivitetsnummer: IgnoreBK [[1..1]]
-  /læringsaktivitetsstartdato: IgnoreBK [[1..1]]
+  /lÃ¦ringsaktivitetsnummer: IgnoreBK [[1..1]]
+  /lÃ¦ringsaktivitetsstartdato: IgnoreBK [[1..1]]
 }
 
 enum TilmeldingsstatusEnum <<enum>> {
   afventerBehandling
   tilmeldt
   frameldt
-  påVenteliste
+  pÃ¥Venteliste
   tilmeldtBetinget
   afvist
-  påVentelisteBetinget
+  pÃ¥VentelisteBetinget
   annulleret
 }
 
-enum TilmeldingsafvisningsårsagEnum <<enum>> {
-  tabtLodtrækning
+enum TilmeldingsafvisningsÃ¥rsagEnum <<enum>> {
+  tabtLodtrÃ¦kning
   kravIkkeOpfyldt
   ingenLedigePladser
   betalingIkkeModtaget
 }
 
-enum FagelementFrameldingsårsagEnum <<enum>> {
+enum FagelementFrameldingsÃ¥rsagEnum <<enum>> {
   aflysning
   dispensation
   merit
   udvekslingsophold
-  karantæne
+  karantÃ¦ne
 }
 
 enum AftaletypeEnum <<enum>> {
   lokalt defineret liste
 }
 
-Prøvetilmelding "1..*" --  "1" TilmeldingTilUdbudtFagelement
+PrÃ¸vetilmelding "1..*" --  "1" TilmeldingTilUdbudtFagelement
 UdbudtFagelement "1" --  "0..*" TilmeldingTilUdbudtFagelement : tilmeldt til
 TilmeldingTilUdbudtFagelement "1" --  "0..1" FrameldingFraUdbudtFagelement
-TilmeldingTilUdbudtFagelement "1" --  "0..*" Holdønske : tilmelding kan indeholde holdønsker
+TilmeldingTilUdbudtFagelement "1" --  "0..*" HoldÃ¸nske : tilmelding kan indeholde holdÃ¸nsker
 TilmeldingTilUdbudtFagelement "0..*" --  "1" PersonligtFagelement
 TilmeldingTilUdbudtFagelement "0..*" --  "0..1" Aftalegrundlag
 Aftalegrundlag "0..*" --  "0..1" EksternKontakt : ekstern vejleder
 Aftalegrundlag "0..*" --  "1" Ansat : akademisk vejleder
 Aftalegrundlag "0..*" --  "0..*" Ansat : akademisk medvejleder
-Aftalegrundlag "0..*" --  "0..1" Eksamensgruppe : ønsket eksamensgruppe
+Aftalegrundlag "0..*" --  "0..1" Eksamensgruppe : Ã¸nsket eksamensgruppe
 Aftalegrundlag "0..1" --  "0..1" EksterntOphold
 Aftalegrundlag "0..*" --  "0..*" Organisation
-TilmeldingTilUdbudtFagelement "1" --  "0..*" TilmeldingTilUdbudtLæringsaktivitet
-TilmeldingTilUdbudtLæringsaktivitet "0..*" --  "1..*" Hold : holdplacering
-TilmeldingTilUdbudtLæringsaktivitet "0..*" --  "1" UdbudtLæringsaktivitet
+TilmeldingTilUdbudtFagelement "1" --  "0..*" TilmeldingTilUdbudtLÃ¦ringsaktivitet
+TilmeldingTilUdbudtLÃ¦ringsaktivitet "0..*" --  "1..*" Hold : holdplacering
+TilmeldingTilUdbudtLÃ¦ringsaktivitet "0..*" --  "1" UdbudtLÃ¦ringsaktivitet
 TilmeldingTilUdbudtFagelement .right.>  TilmeldingsstatusEnum
-TilmeldingTilUdbudtFagelement .right.>  TilmeldingsafvisningsårsagEnum
-TilmeldingTilUdbudtLæringsaktivitet .right.>  TilmeldingsstatusEnum
-FrameldingFraUdbudtFagelement .right.>  FagelementFrameldingsårsagEnum
+TilmeldingTilUdbudtFagelement .right.>  TilmeldingsafvisningsÃ¥rsagEnum
+TilmeldingTilUdbudtLÃ¦ringsaktivitet .right.>  TilmeldingsstatusEnum
+FrameldingFraUdbudtFagelement .right.>  FagelementFrameldingsÃ¥rsagEnum
 Aftalegrundlag .right.>  AftaletypeEnum
 !endsub
 
 !startsub 1_4_3_Laeringsaktivitet
-abstract Læringsaktivitet {
+abstract LÃ¦ringsaktivitet {
 }
 
 class Undervisning {
@@ -617,197 +617,197 @@ class ProjektorienteretOphold {
 }
 
 enum UndervisningsformEnum <<enum>> {
-  Lokalt defineret værdiliste
+  Lokalt defineret vÃ¦rdiliste
 }
 
-Undervisning --|>  Læringsaktivitet
-Praktikophold --|>  Læringsaktivitet
-ProjektorienteretOphold --|>  Læringsaktivitet
-Projektarbejde --|>  Læringsaktivitet
-FagligVejledning --|>  Læringsaktivitet
+Undervisning --|>  LÃ¦ringsaktivitet
+Praktikophold --|>  LÃ¦ringsaktivitet
+ProjektorienteretOphold --|>  LÃ¦ringsaktivitet
+Projektarbejde --|>  LÃ¦ringsaktivitet
+FagligVejledning --|>  LÃ¦ringsaktivitet
 Undervisning .right.>  UndervisningsformEnum
 !endsub
 
 !startsub 1_4_2_Proeve
-class Prøve {
-  eksamensforudsætninger: ? [[0..*]]
-  prøvetype: Picklist [[1..1]]
+class PrÃ¸ve {
+  eksamensforudsÃ¦tninger: ? [[0..*]]
+  prÃ¸vetype: Picklist [[1..1]]
   <<BK>>
   /fagelementkode: IgnoreBK [[1..1]]
 }
 
-class Prøvevariant {
+class PrÃ¸vevariant {
   eksamenssprog: Picklist [[1..1]]
-  prøvevariantNavn: Text80 [[1..1]]
+  prÃ¸vevariantNavn: Text80 [[1..1]]
   censurform: Picklist [[1..1]]
-  bedømmelsesform: Picklist [[1..1]]
+  bedÃ¸mmelsesform: Picklist [[1..1]]
   <<BK>>
-  prøvevariantkode: AutoNum [[1..1]]
+  prÃ¸vevariantkode: AutoNum [[1..1]]
   /fagelementkode: IgnoreBK [[1..1]]
-  /prøveaktivitetsnr: IgnoreBK [[1..1]]
+  /prÃ¸veaktivitetsnr: IgnoreBK [[1..1]]
 }
 
-class Prøveemne {
-  prøveemnenavn: Text80 [[1..1]]
+class PrÃ¸veemne {
+  prÃ¸veemnenavn: Text80 [[1..1]]
   <<BK>>
-  prøveemnekode: AutoNum [[1..1]]
+  prÃ¸veemnekode: AutoNum [[1..1]]
 }
 
-class Prøvebegivenhed {
-  prøvebegivenhedsvarighed: Number.1 [[1..1]]
-  prøvebegivenhedsform: Picklist [[1..1]]
-  erGruppeprøve: Checkbox [[1..1]]
+class PrÃ¸vebegivenhed {
+  prÃ¸vebegivenhedsvarighed: Number.1 [[1..1]]
+  prÃ¸vebegivenhedsform: Picklist [[1..1]]
+  erGruppeprÃ¸ve: Checkbox [[1..1]]
   forberedelsestid: Number.1 [[0..1]]
-  eksamensspørgsmålstype: Picklist [[0..1]]
-  særligePraktiskeForhold: TekstLong [[0..1]]
-  hjælpemidlerVedPrøvebegivenhed: PicklistMulti [[0..*]]
+  eksamensspÃ¸rgsmÃ¥lstype: Picklist [[0..1]]
+  sÃ¦rligePraktiskeForhold: TekstLong [[0..1]]
+  hjÃ¦lpemidlerVedPrÃ¸vebegivenhed: PicklistMulti [[0..*]]
   censornorm: ? [[1..1]]
   deltagelseskrav: ? [[0..1]]
   omfangskrav: Number.1 [[0..1]]
   afviklingsform: Picklist [[1..1]]
-  bedømmelsesvægt: Percent [[0..1]]
+  bedÃ¸mmelsesvÃ¦gt: Percent [[0..1]]
   <<BK>>
-  /prøvekode: IgnoreBK [[1..1]]
-  /prøvevariantkode: IgnoreBK [[1..1]]
-  prøvebegivenhedskode: AutoNum [[1..1]]
-  /prøveaktivitetsnr: IgnoreBK [[1..1]]
+  /prÃ¸vekode: IgnoreBK [[1..1]]
+  /prÃ¸vevariantkode: IgnoreBK [[1..1]]
+  prÃ¸vebegivenhedskode: AutoNum [[1..1]]
+  /prÃ¸veaktivitetsnr: IgnoreBK [[1..1]]
 }
 
-class Prøveaktivitet {
-  delprøverækkefølge: ? [[0..1]]
-  delprøvekaraktervægt: Percent [[0..1]]
-  prøveaktivitetsNavn: Text80 [[0..1]]
-  prøveaktivitetstype: Picklist [[1..1]]
+class PrÃ¸veaktivitet {
+  delprÃ¸verÃ¦kkefÃ¸lge: ? [[0..1]]
+  delprÃ¸vekaraktervÃ¦gt: Percent [[0..1]]
+  prÃ¸veaktivitetsNavn: Text80 [[0..1]]
+  prÃ¸veaktivitetstype: Picklist [[1..1]]
   eksamenspensum: ? [[0..1]]
   <<BK>>
   /fagelementkode: IgnoreBK [[1..1]]
-  prøveaktivitetsnr: ? [[1..1]]
+  prÃ¸veaktivitetsnr: ? [[1..1]]
 }
 
-enum BedømmelsesformEnum <<enum>> {
+enum BedÃ¸mmelsesformEnum <<enum>> {
   7-trinskala
-  bestået/ikke-bestået
+  bestÃ¥et/ikke-bestÃ¥et
 }
 
 enum CensurformEnum <<enum>> {
   eksternCensur
-  internBedømmelse
+  internBedÃ¸mmelse
   udenCensur
 }
 
-enum PrøvebegivenhedsformEnum <<enum>> {
-  skriftligStedprøve
-  mundtligPrøve
+enum PrÃ¸vebegivenhedsformEnum <<enum>> {
+  skriftligStedprÃ¸ve
+  mundtligPrÃ¸ve
   undervisningsdeltagelse
-  praktiskprøve
+  praktiskprÃ¸ve
   hjemmeopgave
 }
 
-enum PrøveTypeEnum <<enum>> {
+enum PrÃ¸veTypeEnum <<enum>> {
   Fageksamen
-  LøbendePrøve
+  LÃ¸bendePrÃ¸ve
   AfsluttendeEksamen
 }
 
-enum EksamensspørgsmålstypeEnum <<enum>> {
-  bundetEksamensspørgsmål
-  fritEksamensspørgsmål
+enum EksamensspÃ¸rgsmÃ¥lstypeEnum <<enum>> {
+  bundetEksamensspÃ¸rgsmÃ¥l
+  fritEksamensspÃ¸rgsmÃ¥l
 }
 
 enum AfviklingsformEnum <<enum>> {
-  fremmøde
-  virtuelPrøvebegivenhed
+  fremmÃ¸de
+  virtuelPrÃ¸vebegivenhed
 }
 
-enum PrøveaktivitetstypeEnum <<enum>> {
-  delprøve
-  prøve
+enum PrÃ¸veaktivitetstypeEnum <<enum>> {
+  delprÃ¸ve
+  prÃ¸ve
 }
 
-enum HjælpemidlerVedPrøvebegivenhedEnum <<enum>> {
-  Lokalt defineret værdiliste
+enum HjÃ¦lpemidlerVedPrÃ¸vebegivenhedEnum <<enum>> {
+  Lokalt defineret vÃ¦rdiliste
 }
 
-Prøve "1" --  "0..*" UdbudtPrøve : udbudt som
-Prøve "1" --  "1" Fagelement
-Prøvetilmelding "0..*" --  "0..1" Prøveemne : valgt emne
-UdbudtPrøve "0..*" --  "0..*" Prøveemne : mulige emner
-Prøvebegivenhed "1..*" --  "1" Prøvevariant
-UdbudtPrøvevariant "0..*" --  "1" Prøvevariant
-Prøve "0..*" --  "0..*" Prøveemne : mulige emner
-Prøve "1" --  "1..*" Prøveaktivitet
-Prøveaktivitet "1" --  "1..*" Prøvevariant
-UdbudtPrøveaktivitet "0..*" --  "1" Prøveaktivitet
-Prøvebegivenhed "1" --  "0..*" UdbudtPrøvebegivenhed
-Prøvevariant .right.>  SprogEnum
-Prøvebegivenhed .right.>  PrøvebegivenhedsformEnum
-Prøve .right.>  PrøveTypeEnum
-Prøvebegivenhed .right.>  EksamensspørgsmålstypeEnum
-Prøvebegivenhed .right.>  AfviklingsformEnum
-Prøveaktivitet .right.>  PrøveaktivitetstypeEnum
-Prøvevariant .right.>  BedømmelsesformEnum
-Prøvevariant .right.>  CensurformEnum
-Prøvebegivenhed .right.>  HjælpemidlerVedPrøvebegivenhedEnum
+PrÃ¸ve "1" --  "0..*" UdbudtPrÃ¸ve : udbudt som
+PrÃ¸ve "1" --  "1" Fagelement
+PrÃ¸vetilmelding "0..*" --  "0..1" PrÃ¸veemne : valgt emne
+UdbudtPrÃ¸ve "0..*" --  "0..*" PrÃ¸veemne : mulige emner
+PrÃ¸vebegivenhed "1..*" --  "1" PrÃ¸vevariant
+UdbudtPrÃ¸vevariant "0..*" --  "1" PrÃ¸vevariant
+PrÃ¸ve "0..*" --  "0..*" PrÃ¸veemne : mulige emner
+PrÃ¸ve "1" --  "1..*" PrÃ¸veaktivitet
+PrÃ¸veaktivitet "1" --  "1..*" PrÃ¸vevariant
+UdbudtPrÃ¸veaktivitet "0..*" --  "1" PrÃ¸veaktivitet
+PrÃ¸vebegivenhed "1" --  "0..*" UdbudtPrÃ¸vebegivenhed
+PrÃ¸vevariant .right.>  SprogEnum
+PrÃ¸vebegivenhed .right.>  PrÃ¸vebegivenhedsformEnum
+PrÃ¸ve .right.>  PrÃ¸veTypeEnum
+PrÃ¸vebegivenhed .right.>  EksamensspÃ¸rgsmÃ¥lstypeEnum
+PrÃ¸vebegivenhed .right.>  AfviklingsformEnum
+PrÃ¸veaktivitet .right.>  PrÃ¸veaktivitetstypeEnum
+PrÃ¸vevariant .right.>  BedÃ¸mmelsesformEnum
+PrÃ¸vevariant .right.>  CensurformEnum
+PrÃ¸vebegivenhed .right.>  HjÃ¦lpemidlerVedPrÃ¸vebegivenhedEnum
 !endsub
 
 !startsub 3_1_2_Udbudt_proeve
-class UdbudtPrøvevariant {
+class UdbudtPrÃ¸vevariant {
   eksamenssprog: Picklist [[1..1]]
   censurform: Picklist [[0..1]]
-  bedømmelsesform: Picklist [[0..1]]
+  bedÃ¸mmelsesform: Picklist [[0..1]]
   <<BK>>
   /fagelementkode: IgnoreBK [[1..1]]
-  /prøveaktivitetskode: IgnoreBK [[1..1]]
+  /prÃ¸veaktivitetskode: IgnoreBK [[1..1]]
   /udbudsperiodekode: IgnoreBK [[1..1]]
   /udbudsstedkode: IgnoreBK [[1..1]]
-  /prøveperiodestartdato: IgnoreBK [[1..1]]
-  /prøvevariantkode: IgnoreBK [[1..1]]
+  /prÃ¸veperiodestartdato: IgnoreBK [[1..1]]
+  /prÃ¸vevariantkode: IgnoreBK [[1..1]]
 }
 
-class UdbudtPrøvebegivenhed {
-  prøvebegivenhedsvarighed: Number.1 [[1..1]]
-  erGruppeprøve: Checkbox [[1..1]]
+class UdbudtPrÃ¸vebegivenhed {
+  prÃ¸vebegivenhedsvarighed: Number.1 [[1..1]]
+  erGruppeprÃ¸ve: Checkbox [[1..1]]
   omfangskrav: Number.1 [[1..1]]
   forberedelsestid: Number.1 [[1..1]]
-  særligePraktiskeForhold: TekstLong [[1..1]]
+  sÃ¦rligePraktiskeForhold: TekstLong [[1..1]]
   anonymEksamensbesvarelse: ? [[0..1]]
   eksamensgruppeMaxStr: ? [[0..1]]
   gruppedannelsesprincip: Picklist [[0..1]]
-  hjælpemidlerVedPrøvebegivenhed: PicklistMulti [[0..*]]
+  hjÃ¦lpemidlerVedPrÃ¸vebegivenhed: PicklistMulti [[0..*]]
   afleveringsfrist: Date [[0..1]]
   afviklingsform: Picklist [[1..1]]
   eksamensgruppeMinStr: ? [[0..1]]
   eksamensopgave: ? [[0..1]]
   <<BK>>
-  /prøveaktivitetskode: IgnoreBK [[1..1]]
+  /prÃ¸veaktivitetskode: IgnoreBK [[1..1]]
   /fagelementkode: IgnoreBK [[1..1]]
   /udbudsperiodekode: IgnoreBK [[1..1]]
   /udbudsstedkode: IgnoreBK [[1..1]]
-  /prøvebegivenhedskode: IgnoreBK [[1..1]]
-  /prøvevariantkode: IgnoreBK [[1..1]]
-  /prøveperiodestartdato: IgnoreBK [[1..1]]
+  /prÃ¸vebegivenhedskode: IgnoreBK [[1..1]]
+  /prÃ¸vevariantkode: IgnoreBK [[1..1]]
+  /prÃ¸veperiodestartdato: IgnoreBK [[1..1]]
 }
 
 class Sameksamination {
   sameksaminationsnavn: Text80 [[1..1]]
 }
 
-class UdbudtPrøveaktivitet {
+class UdbudtPrÃ¸veaktivitet {
   eksamenspensum: ? [[0..1]]
   <<BK>>
   /fagelementkode: IgnoreBK [[1..1]]
   /udbudsstedkode: IgnoreBK [[1..1]]
   /udbudsperiodekode: IgnoreBK [[1..1]]
-  /prøveaktivitetskode: IgnoreBK [[1..1]]
-  /prøveperiodestartdato: IgnoreBK [[1..1]]
+  /prÃ¸veaktivitetskode: IgnoreBK [[1..1]]
+  /prÃ¸veperiodestartdato: IgnoreBK [[1..1]]
 }
 
-class UdbudtPrøve {
+class UdbudtPrÃ¸ve {
   <<BK>>
   /fagelementkode: IgnoreBK [[1..1]]
   /udbudsperiodekode: IgnoreBK [[1..1]]
   /udbudsstedkode: IgnoreBK [[1..1]]
-  /prøveperiodestartdato: IgnoreBK [[1..1]]
+  /prÃ¸veperiodestartdato: IgnoreBK [[1..1]]
 }
 
 class TidOgSted {
@@ -820,33 +820,33 @@ enum GruppedannelsesprincipEnum <<enum>> {
   dannesAfAdministration
 }
 
-Prøve "1" --  "0..*" UdbudtPrøve : udbudt som
-UdbudtPrøve "1" --  "0..*" Prøvetilmelding
-UdbudtPrøve "0..*" --  "0..*" Prøveemne : mulige emner
-UdbudtPrøvevariant "1" --  "1..*" UdbudtPrøvebegivenhed
-UdbudtPrøvevariant "0..*" --  "1" Prøvevariant
-UdbudtFagelement "1" --  "1..*" UdbudtPrøve
-Sameksamination "0..1" --  "0..*" UdbudtPrøvebegivenhed : del af
-UdbudtPrøve "0..*" --  "1" Prøveperiode
-UdbudtPrøveaktivitet "1" --  "1..*" UdbudtPrøvevariant
-UdbudtPrøve "1" --  "1..*" UdbudtPrøveaktivitet
-UdbudtPrøveaktivitet "0..*" --  "1" Prøveaktivitet
-Prøveaktivitetstilmelding "0..*" --  "1" UdbudtPrøvevariant : prøvevarianttilmelding
-Prøveaktivitetstilmelding "0..*" --  "1" UdbudtPrøveaktivitet
-Prøvebegivenhed "1" --  "0..*" UdbudtPrøvebegivenhed
-PersonligPrøvebegivenhed "0..*" --  "1" UdbudtPrøvebegivenhed
-UdbudtPrøvebegivenhed "0..*" --  "0..*" TidOgSted
-PersonligPrøvebegivenhed "0..*" --  "0..1" TidOgSted
-UdbudtPrøvebegivenhed .right.>  GruppedannelsesprincipEnum
-UdbudtPrøvevariant .right.>  SprogEnum
-UdbudtPrøvebegivenhed .right.>  AfviklingsformEnum
-UdbudtPrøvebegivenhed .right.>  HjælpemidlerVedPrøvebegivenhedEnum
-UdbudtPrøvevariant .right.>  CensurformEnum
-UdbudtPrøvevariant .right.>  BedømmelsesformEnum
+PrÃ¸ve "1" --  "0..*" UdbudtPrÃ¸ve : udbudt som
+UdbudtPrÃ¸ve "1" --  "0..*" PrÃ¸vetilmelding
+UdbudtPrÃ¸ve "0..*" --  "0..*" PrÃ¸veemne : mulige emner
+UdbudtPrÃ¸vevariant "1" --  "1..*" UdbudtPrÃ¸vebegivenhed
+UdbudtPrÃ¸vevariant "0..*" --  "1" PrÃ¸vevariant
+UdbudtFagelement "1" --  "1..*" UdbudtPrÃ¸ve
+Sameksamination "0..1" --  "0..*" UdbudtPrÃ¸vebegivenhed : del af
+UdbudtPrÃ¸ve "0..*" --  "1" PrÃ¸veperiode
+UdbudtPrÃ¸veaktivitet "1" --  "1..*" UdbudtPrÃ¸vevariant
+UdbudtPrÃ¸ve "1" --  "1..*" UdbudtPrÃ¸veaktivitet
+UdbudtPrÃ¸veaktivitet "0..*" --  "1" PrÃ¸veaktivitet
+PrÃ¸veaktivitetstilmelding "0..*" --  "1" UdbudtPrÃ¸vevariant : prÃ¸vevarianttilmelding
+PrÃ¸veaktivitetstilmelding "0..*" --  "1" UdbudtPrÃ¸veaktivitet
+PrÃ¸vebegivenhed "1" --  "0..*" UdbudtPrÃ¸vebegivenhed
+PersonligPrÃ¸vebegivenhed "0..*" --  "1" UdbudtPrÃ¸vebegivenhed
+UdbudtPrÃ¸vebegivenhed "0..*" --  "0..*" TidOgSted
+PersonligPrÃ¸vebegivenhed "0..*" --  "0..1" TidOgSted
+UdbudtPrÃ¸vebegivenhed .right.>  GruppedannelsesprincipEnum
+UdbudtPrÃ¸vevariant .right.>  SprogEnum
+UdbudtPrÃ¸vebegivenhed .right.>  AfviklingsformEnum
+UdbudtPrÃ¸vebegivenhed .right.>  HjÃ¦lpemidlerVedPrÃ¸vebegivenhedEnum
+UdbudtPrÃ¸vevariant .right.>  CensurformEnum
+UdbudtPrÃ¸vevariant .right.>  BedÃ¸mmelsesformEnum
 !endsub
 
 !startsub 3_1_3_Udbudt_laeringsaktivitet
-abstract UdbudtLæringsaktivitet {
+abstract UdbudtLÃ¦ringsaktivitet {
 }
 
 class UdbudtUndervisning {
@@ -864,24 +864,24 @@ class UdbudtProjektarbejde {
 class UdbudtProjektorienteretOphold {
 }
 
-class Samlæsning {
-  samlæsningsnavn: Text80 [[1..1]]
+class SamlÃ¦sning {
+  samlÃ¦sningsnavn: Text80 [[1..1]]
 }
 
-class UdbudtLæringsaktivitetsansvarligPerson {
+class UdbudtLÃ¦ringsaktivitetsansvarligPerson {
   orgPersonAnsvarsrolle: Picklist [[1..1]]
 }
 
-UdbudtUndervisning "0..*" --  "0..1" Samlæsning
-UdbudtLæringsaktivitetsansvarligPerson "0..*" --  "1" UdbudtLæringsaktivitet
-UdbudtLæringsaktivitetsansvarligPerson "0..*" --  "0..1" Ansat
-UdbudtLæringsaktivitetsansvarligPerson "0..*" --  "0..1" Medlemskab
-UdbudtUndervisning --|>  UdbudtLæringsaktivitet
-UdbudtFagligVejledning --|>  UdbudtLæringsaktivitet
-UdbudtPraktikophold --|>  UdbudtLæringsaktivitet
-UdbudtProjektarbejde --|>  UdbudtLæringsaktivitet
-UdbudtProjektorienteretOphold --|>  UdbudtLæringsaktivitet
-UdbudtLæringsaktivitetsansvarligPerson .right.>  OrgPersonAnsvarsrolleEnum
+UdbudtUndervisning "0..*" --  "0..1" SamlÃ¦sning
+UdbudtLÃ¦ringsaktivitetsansvarligPerson "0..*" --  "1" UdbudtLÃ¦ringsaktivitet
+UdbudtLÃ¦ringsaktivitetsansvarligPerson "0..*" --  "0..1" Ansat
+UdbudtLÃ¦ringsaktivitetsansvarligPerson "0..*" --  "0..1" Medlemskab
+UdbudtUndervisning --|>  UdbudtLÃ¦ringsaktivitet
+UdbudtFagligVejledning --|>  UdbudtLÃ¦ringsaktivitet
+UdbudtPraktikophold --|>  UdbudtLÃ¦ringsaktivitet
+UdbudtProjektarbejde --|>  UdbudtLÃ¦ringsaktivitet
+UdbudtProjektorienteretOphold --|>  UdbudtLÃ¦ringsaktivitet
+UdbudtLÃ¦ringsaktivitetsansvarligPerson .right.>  OrgPersonAnsvarsrolleEnum
 !endsub
 
 !startsub 2_3_Studerende
@@ -896,7 +896,7 @@ class Studerende {
 class Ansat {
 }
 
-class Ansøger {
+class AnsÃ¸ger {
 }
 
 class EuropeanStudentIdentifier {
@@ -913,50 +913,50 @@ enum StudieforholdsstadieEnum <<enum>> {
 }
 
 Studerende "1" --  "1..*" Indskrivning
-Prøvetilmelding "0..*" --  "0..1" Ansat : valgt vejleder
-PrøveforsøgMedBedømmelse "0..*" --  "1..*" Ansat : eksaminator
-PrøveforsøgMedBedømmelse "0..*" --  "0..*" Ansat : medbedømmer
+PrÃ¸vetilmelding "0..*" --  "0..1" Ansat : valgt vejleder
+PrÃ¸veforsÃ¸gMedBedÃ¸mmelse "0..*" --  "1..*" Ansat : eksaminator
+PrÃ¸veforsÃ¸gMedBedÃ¸mmelse "0..*" --  "0..*" Ansat : medbedÃ¸mmer
 FagelementansvarligPerson "0..*" --  "0..1" Ansat
 UdbudtFagelementansvarligPerson "0..*" --  "0..1" Ansat
-Ansøger "1" --  "1..*" AnsøgningOmOptagelse : ansøger
+AnsÃ¸ger "1" --  "1..*" AnsÃ¸gningOmOptagelse : ansÃ¸ger
 Studerende "0..1" --  "1" OrgPerson : er
 Aftalegrundlag "0..*" --  "1" Ansat : akademisk vejleder
 Aftalegrundlag "0..*" --  "0..*" Ansat : akademisk medvejleder
 OrgPerson "1" --  "0..1" Ansat : er
-UdbudtLæringsaktivitetsansvarligPerson "0..*" --  "0..1" Ansat
-UdbudtVideregåendeUddannelseOgEnkeltfag "0..*" --  "0..*" Ansat : faglig bedømmer for
-Ansøger "0..1" --  "1" OrgPerson : er
-PermanentPrøvedispensation "0..*" --  "1" Studerende
+UdbudtLÃ¦ringsaktivitetsansvarligPerson "0..*" --  "0..1" Ansat
+UdbudtVideregÃ¥endeUddannelseOgEnkeltfag "0..*" --  "0..*" Ansat : faglig bedÃ¸mmer for
+AnsÃ¸ger "0..1" --  "1" OrgPerson : er
+PermanentPrÃ¸vedispensation "0..*" --  "1" Studerende
 EuropeanStudentIdentifier "0..1" --  "1" Studerende
 Studerende .right.>  StudieforholdsstadieEnum
 !endsub
 
 !startsub 3_2_2_Proevetilmelding
-class Prøvetilmelding {
+class PrÃ¸vetilmelding {
   tilmeldingstidspunkt: Number.1 [[1..1]]
   tilmeldtAf: ? [[1..1]]
-  /prøveforsøgnr: Calculated [[1..1]]
-  eksamensforudsætningOpfyldt: ? [[1..1]]
-  /erFrameldtFraUdbudtprøve: Calculated [[1..1]]
+  /prÃ¸veforsÃ¸gnr: Calculated [[1..1]]
+  eksamensforudsÃ¦tningOpfyldt: ? [[1..1]]
+  /erFrameldtFraUdbudtprÃ¸ve: Calculated [[1..1]]
   <<BK>>
   /udbudsperiodekode: IgnoreBK [[1..1]]
   /indskrivningsnummer: IgnoreBK [[1..1]]
   /fagelementkode: IgnoreBK [[1..1]]
   /udbudsstedkode: IgnoreBK [[1..1]]
-  /prøveperiodestartdato: IgnoreBK [[1..1]]
+  /prÃ¸veperiodestartdato: IgnoreBK [[1..1]]
 }
 
-class FrameldingFraUdbudtPrøveaktivitet {
+class FrameldingFraUdbudtPrÃ¸veaktivitet {
   frameldingsdato: Date [[1..1]]
   frameldtAf: ? [[1..1]]
-  frameldingsårsag: Picklist [[1..1]]
+  frameldingsÃ¥rsag: Picklist [[1..1]]
   <<BK>>
   /fagelementkode: IgnoreBK [[1..1]]
-  /prøvevariantkode: IgnoreBK [[1..1]]
+  /prÃ¸vevariantkode: IgnoreBK [[1..1]]
   /indskrivningsnummer: IgnoreBK [[1..1]]
   /udbudsperiodekode: IgnoreBK [[1..1]]
   /udbudsstedkode: IgnoreBK [[1..1]]
-  /prøveforsøgnr: IgnoreBK [[1..1]]
+  /prÃ¸veforsÃ¸gnr: IgnoreBK [[1..1]]
   /udbudsperiodeStartdato: IgnoreBK [[1..1]]
 }
 
@@ -966,61 +966,61 @@ class Eksamensgruppe {
   eksamensgruppekode: AutoNum [[1..1]]
 }
 
-class Prøveaktivitetstilmelding {
-  foreløbigOpgavetitel: Text80 [[0..1]]
+class PrÃ¸veaktivitetstilmelding {
+  forelÃ¸bigOpgavetitel: Text80 [[0..1]]
   <<BK>>
   /fagelementkode: IgnoreBK [[1..1]]
   /indskrivningsnummer: IgnoreBK [[1..1]]
-  /prøveforsøgnr: IgnoreBK [[1..1]]
-  /prøveperiodestartdato: IgnoreBK [[1..1]]
+  /prÃ¸veforsÃ¸gnr: IgnoreBK [[1..1]]
+  /prÃ¸veperiodestartdato: IgnoreBK [[1..1]]
   /udbudsperiodekode: IgnoreBK [[1..1]]
   /udbudsstedkode: IgnoreBK [[1..1]]
-  /prøveaktivitetskode: IgnoreBK [[1..1]]
+  /prÃ¸veaktivitetskode: IgnoreBK [[1..1]]
 }
 
-class PersonligPrøvebegivenhed {
-  særligeprøvevilkår: Picklist [[1..1]]
-  personligPrøvebegivenhedsdato: Date [[1..1]]
+class PersonligPrÃ¸vebegivenhed {
+  sÃ¦rligeprÃ¸vevilkÃ¥r: Picklist [[1..1]]
+  personligPrÃ¸vebegivenhedsdato: Date [[1..1]]
   eksamensbesvarelse: ? [[0..1]]
   <<BK>>
-  /prøveperiodestartdato: IgnoreBK [[1..1]]
+  /prÃ¸veperiodestartdato: IgnoreBK [[1..1]]
   /fagelementkode: IgnoreBK [[1..1]]
   /indskrivningsnummer: IgnoreBK [[1..1]]
-  /prøveforsøgnr: IgnoreBK [[1..1]]
+  /prÃ¸veforsÃ¸gnr: IgnoreBK [[1..1]]
   /udbudsperiodekode: IgnoreBK [[1..1]]
   /udbudsstedkode: IgnoreBK [[1..1]]
-  /prøveaktivitetskode: IgnoreBK [[1..1]]
+  /prÃ¸veaktivitetskode: IgnoreBK [[1..1]]
 }
 
-enum særligeprøvevilkårEnum <<enum>> {
-  Lokalt defineret værdiliste
+enum sÃ¦rligeprÃ¸vevilkÃ¥rEnum <<enum>> {
+  Lokalt defineret vÃ¦rdiliste
 }
 
-enum PrøveFrameldingsÅrsagEnum <<enum>> {
+enum PrÃ¸veFrameldingsÃ…rsagEnum <<enum>> {
   sygdom
   aflyst
   dispensation
 }
 
-UdbudtPrøve "1" --  "0..*" Prøvetilmelding
-Prøvetilmelding "1..*" --  "1" TilmeldingTilUdbudtFagelement
-Prøveaktivitetstilmelding "1" --  "0..1" FrameldingFraUdbudtPrøveaktivitet
-Prøvetilmelding "0..*" --  "0..1" Prøveemne : valgt emne
-Prøvetilmelding "0..*" --  "0..1" Ansat : valgt vejleder
-Prøvetilmelding "1..*" --  "0..1" Eksamensgruppe : valgt eksamensgruppe
-Aftalegrundlag "0..*" --  "0..1" Eksamensgruppe : ønsket eksamensgruppe
-Prøvetilmelding "1" --  "0..*" Prøvedispensation
-Prøveaktivitetstilmelding "0..*" --  "1" UdbudtPrøvevariant : prøvevarianttilmelding
-Prøveaktivitetstilmelding "0..*" --  "1" UdbudtPrøveaktivitet
-Prøveaktivitetsforsøg "0..1" --  "1" Prøveaktivitetstilmelding
-Prøvetilmelding "1" --  "1..*" Prøveaktivitetstilmelding
-PersonligPrøveaktivitet "1" --  "1..*" Prøveaktivitetstilmelding
-Prøveaktivitetstilmelding "1" --  "1..*" PersonligPrøvebegivenhed
-PrøveforsøgUdenBedømmelse "0..1" --  "1" PersonligPrøvebegivenhed
-PersonligPrøvebegivenhed "0..*" --  "1" UdbudtPrøvebegivenhed
-PersonligPrøvebegivenhed "0..*" --  "0..1" TidOgSted
-PersonligPrøvebegivenhed .right.>  særligeprøvevilkårEnum
-FrameldingFraUdbudtPrøveaktivitet .right.>  PrøveFrameldingsÅrsagEnum
+UdbudtPrÃ¸ve "1" --  "0..*" PrÃ¸vetilmelding
+PrÃ¸vetilmelding "1..*" --  "1" TilmeldingTilUdbudtFagelement
+PrÃ¸veaktivitetstilmelding "1" --  "0..1" FrameldingFraUdbudtPrÃ¸veaktivitet
+PrÃ¸vetilmelding "0..*" --  "0..1" PrÃ¸veemne : valgt emne
+PrÃ¸vetilmelding "0..*" --  "0..1" Ansat : valgt vejleder
+PrÃ¸vetilmelding "1..*" --  "0..1" Eksamensgruppe : valgt eksamensgruppe
+Aftalegrundlag "0..*" --  "0..1" Eksamensgruppe : Ã¸nsket eksamensgruppe
+PrÃ¸vetilmelding "1" --  "0..*" PrÃ¸vedispensation
+PrÃ¸veaktivitetstilmelding "0..*" --  "1" UdbudtPrÃ¸vevariant : prÃ¸vevarianttilmelding
+PrÃ¸veaktivitetstilmelding "0..*" --  "1" UdbudtPrÃ¸veaktivitet
+PrÃ¸veaktivitetsforsÃ¸g "0..1" --  "1" PrÃ¸veaktivitetstilmelding
+PrÃ¸vetilmelding "1" --  "1..*" PrÃ¸veaktivitetstilmelding
+PersonligPrÃ¸veaktivitet "1" --  "1..*" PrÃ¸veaktivitetstilmelding
+PrÃ¸veaktivitetstilmelding "1" --  "1..*" PersonligPrÃ¸vebegivenhed
+PrÃ¸veforsÃ¸gUdenBedÃ¸mmelse "0..1" --  "1" PersonligPrÃ¸vebegivenhed
+PersonligPrÃ¸vebegivenhed "0..*" --  "1" UdbudtPrÃ¸vebegivenhed
+PersonligPrÃ¸vebegivenhed "0..*" --  "0..1" TidOgSted
+PersonligPrÃ¸vebegivenhed .right.>  sÃ¦rligeprÃ¸vevilkÃ¥rEnum
+FrameldingFraUdbudtPrÃ¸veaktivitet .right.>  PrÃ¸veFrameldingsÃ…rsagEnum
 !endsub
 
 !startsub 9_0_Universitetets_struktur
@@ -1066,14 +1066,14 @@ class Person {
   mellemnavne: Text80 [[1..1]]
   id: ? [[1..1]]
   navneOgAdressebeskyttelse: Text80 [[1..1]]
-  fødselsdato: Date [[1..1]]
+  fÃ¸dselsdato: Date [[1..1]]
   <<BK>>
   personnummer: AutoNum [[1..1]]
 }
 
 class DanskAdresse {
   husnummer: Number.0 [[1..1]]
-  dør: ? [[1..1]]
+  dÃ¸r: ? [[1..1]]
   etage: ? [[1..1]]
   vejnavn: Text80 [[1..1]]
   postnummer: Number.0 [[1..1]]
@@ -1111,7 +1111,7 @@ class UdenlandskAdresse {
 }
 
 class PersonUdenCpr {
-  fødselsdato: Date [[1..1]]
+  fÃ¸dselsdato: Date [[1..1]]
   navn: Text80 [[1..1]]
   <<BK>>
   konstrueretPersonnummer: AutoNum [[1..1]]
@@ -1147,7 +1147,7 @@ enum SprogEnum <<enum>> {
 }
 
 enum OrgEnhedAnsvarsrolleEnum <<enum>> {
-  økonomiskAnsvarlig
+  Ã¸konomiskAnsvarlig
   uddannelsesAnsvarlig
   producerendeAnsvarlig
   alumneAnsvarlig
@@ -1160,8 +1160,8 @@ enum GodkendelsesstatusEnum <<enum>> {
   betingetGodkendt
   henlagt
   annulleret
-  imødekommet
-  ikkeImødekommet
+  imÃ¸dekommet
+  ikkeImÃ¸dekommet
 }
 
 enum LandEnum <<enum>> {
@@ -1179,46 +1179,46 @@ enum OrgPersonAnsvarsrolleEnum <<enum>> {
 
 UdbudtFagelement "0..*" --  "1" Udbudssted
 UddannelsesansvarligEnhed "0..*" --  "1" OrgEnhed : ansvarlig enhed
-UdbudtVideregåendeUddannelseOgEnkeltfag "0..*" --  "1" Udbudssted : primære udbudssted
+UdbudtVideregÃ¥endeUddannelseOgEnkeltfag "0..*" --  "1" Udbudssted : primÃ¦re udbudssted
 AdgangsgivendeEksamen "0..*" --  "1" Uddannelsesinstitution : adgangsgivende inst.
-UdbudtLæringsaktivitet "0..*" --  "1" Udbudssted
-VideregåendeUddannelse "0..*" --  "1..*" GodkendtUdbudssted : godkendt til udbud ved
+UdbudtLÃ¦ringsaktivitet "0..*" --  "1" Udbudssted
+VideregÃ¥endeUddannelse "0..*" --  "1..*" GodkendtUdbudssted : godkendt til udbud ved
 Uddannelsesinstitution "1" --  "0..*" Udbudssted
 EksterntFagelement "0..*" --  "1" Uddannelsesinstitution : fra
-PrøveforsøgMedBedømmelse "0..*" --  "0..*" OrgPerson : censor
-GeneriskPerson "1" --  "0..*" OrgPerson : repræsenterer
+PrÃ¸veforsÃ¸gMedBedÃ¸mmelse "0..*" --  "0..*" OrgPerson : censor
+GeneriskPerson "1" --  "0..*" OrgPerson : reprÃ¦senterer
 FagelementansvarligEnhed "0..*" --  "1" OrgEnhed
 UdbudtFagelementansvarligEnhed "0..*" --  "1" OrgEnhed
 Uddannelsesinstitution "1" --  "0..*" Udvekslingsaftale : partner institution
-OrgPerson "1" --  "0..*" Organisation : tilhører
+OrgPerson "1" --  "0..*" Organisation : tilhÃ¸rer
 Studerende "0..1" --  "1" OrgPerson : er
 Person "1" --  "1..2" Statsborgerskab
 EksternKontakt "0..*" --  "1" Organisation
 Virksomhedsbetaling "0..*" --  "1" Organisation : debitor
 Indskrivning "0..*" --  "0..1" Organisation : relevant arbejdsplads
 EksterntOphold "0..*" --  "0..1" Uddannelsesinstitution
-Uddannelsesinstitution "1" --  "0..*" Udvekslingsansøgning : fra
+Uddannelsesinstitution "1" --  "0..*" UdvekslingsansÃ¸gning : fra
 OrgPerson "1" --  "0..1" Ansat : er
-OrgEnhed "0..*" --  "1" Organisation : tilhører
+OrgEnhed "0..*" --  "1" Organisation : tilhÃ¸rer
 Uddannelse "0..*" --  "0..*" Uddannelsesinstitution : samarbejdspartner
-VideregåendeUddannelse "0..*" --  "1" Universitet : udbyder
+VideregÃ¥endeUddannelse "0..*" --  "1" Universitet : udbyder
 Aftalegrundlag "0..*" --  "0..*" Organisation
 Udbudssted "0..*" --  "1" Adresse
 OrgEnhed "0..1" --  "0..*" OrgEnhed : overordnet
 OrgEnhed "0..*" --  "0..*" Adresse : fysiskAdresse
-OrgPerson "0..*" --  "0..*" UdbudtVideregåendeUddannelseOgEnkeltfag : ekstern faglig bedømmer
+OrgPerson "0..*" --  "0..*" UdbudtVideregÃ¥endeUddannelseOgEnkeltfag : ekstern faglig bedÃ¸mmer
 HoldBegivenhedPerson "0..*" --  "1" OrgPerson
 EksterntOphold "0..1" --  "0..1" Organisation : hos
-Ansøger "0..1" --  "1" OrgPerson : er
-Udbudssted "0..*" --  "1" GodkendtUdbudssted : hører under
+AnsÃ¸ger "0..1" --  "1" OrgPerson : er
+Udbudssted "0..*" --  "1" GodkendtUdbudssted : hÃ¸rer under
 Uddannelsesinstitution "1" --  "1..*" GodkendtUdbudssted
-Universitet "1" --  "0..*" OrgPerson : tilhører
+Universitet "1" --  "0..*" OrgPerson : tilhÃ¸rer
 Medlemskab "0..*" --  "0..1" OrgPerson
 Medlemskab "0..*" --  "1..*" OrgEnhed
 UddannelsesansvarligPerson "0..*" --  "0..1" OrgPerson
 UddannelsesansvarligPerson "0..*" --  "0..1" Medlemskab
-Udvekslingsansøgning "0..*" --  "0..1" OrgPerson : ekstern kontakt
-UdbudtLæringsaktivitetsansvarligPerson "0..*" --  "0..1" Medlemskab
+UdvekslingsansÃ¸gning "0..*" --  "0..1" OrgPerson : ekstern kontakt
+UdbudtLÃ¦ringsaktivitetsansvarligPerson "0..*" --  "0..1" Medlemskab
 UdbudtFagelementansvarligPerson "0..*" --  "0..1" Medlemskab
 FagelementansvarligPerson "0..*" --  "0..1" Medlemskab
 Uddannelsesinstitution "1" --  "0..*" RegisterRegistrering
@@ -1239,9 +1239,9 @@ OrgPerson .right.>  SprogEnum
 !endsub
 
 !startsub 1_7_1_Udbudt_videregaaende_uddannelse
-class UdbudtVideregåendeUddannelse {
-  tilrettelæggelsesform: Picklist [[1..1]]
-  kræverValgAfStudieforløb: Checkbox [[1..1]]
+class UdbudtVideregÃ¥endeUddannelse {
+  tilrettelÃ¦ggelsesform: Picklist [[1..1]]
+  krÃ¦verValgAfStudieforlÃ¸b: Checkbox [[1..1]]
   optagelseskode: Text80 [[1..1]]
   <<BK>>
   /optagelsesperiodekode: IgnoreBK [[1..1]]
@@ -1249,11 +1249,11 @@ class UdbudtVideregåendeUddannelse {
   /uddannelsesId: IgnoreBK [[1..1]]
 }
 
-abstract UdbudtVideregåendeUddannelseOgEnkeltfag {
+abstract UdbudtVideregÃ¥endeUddannelseOgEnkeltfag {
 }
 
 class Optagelsesperiode {
-  ansøgningsstartdato: Date [[1..1]]
+  ansÃ¸gningsstartdato: Date [[1..1]]
   optagelsesperiodenavn: Text80 [[1..1]]
   uddannelsestype: Picklist [[1..1]]
   <<BK>>
@@ -1267,12 +1267,12 @@ class Udbudshjemmel {
   udbudshjemmelkode: AutoNum [[1..1]]
 }
 
-class Bogføringsoplysninger {
-  beløb: Currency [[1..1]]
-  bogføringsandel: Percent [[1..1]]
+class BogfÃ¸ringsoplysninger {
+  belÃ¸b: Currency [[1..1]]
+  bogfÃ¸ringsandel: Percent [[1..1]]
   <<BK>>
-  bogføringskonto: ? [[1..1]]
-  /betalingsmålgruppe: IgnoreBK [[0..1]]
+  bogfÃ¸ringskonto: ? [[1..1]]
+  /betalingsmÃ¥lgruppe: IgnoreBK [[0..1]]
   /prisreference: IgnoreBK [[1..1]]
   /periodekode: IgnoreBK [[0..1]]
 }
@@ -1281,13 +1281,13 @@ class Pris {
   pris: Currency [[1..1]]
   prisbeskrivelse: Currency [[1..1]]
   <<BK>>
-  betalingsmålgruppe: ? [[0..1]]
+  betalingsmÃ¥lgruppe: ? [[0..1]]
   prisreference: IgnoreBK [[1..1]]
   periodekode: IgnoreBK [[0..1]]
 }
 
-class Ansøgningsfrist {
-  ansøgningsfrist: Date [[1..1]]
+class AnsÃ¸gningsfrist {
+  ansÃ¸gningsfrist: Date [[1..1]]
   svarfrist: Date [[1..1]]
 }
 
@@ -1295,35 +1295,35 @@ class Studiestart {
   studiestartsdato: Date [[1..1]]
 }
 
-class UdbudtStudieforløb {
+class UdbudtStudieforlÃ¸b {
 }
 
 enum UdbudsformEnum <<enum>> {
   deltidsuddannelse
-  heltidPåDeltid
+  heltidPÃ¥Deltid
   heltidsuddannelse
 }
 
-UdbudtVideregåendeUddannelse "0..*" --  "1" VideregåendeUddannelse : udbud af
-UdbudtVideregåendeUddannelse "0..*" --  "1" Studieordning : udbudt studieordning
-IndskrivningTilVideregåendeUddannelse "0..*" --  "1" UdbudtVideregåendeUddannelse : indskrevet på
-PrioriteretUddannelse "0..*" --  "1" UdbudtVideregåendeUddannelse
-Uddannelsesansøgning "0..*" --  "0..1" UdbudtVideregåendeUddannelse : placeret på venteliste til
-UdbudtVideregåendeUddannelse "1" --  "0..*" TilbudOmStudiepladsPåUddannelse
-Optagelsesperiode "1" --  "0..*" UdbudtVideregåendeUddannelseOgEnkeltfag
-UdbudtVideregåendeUddannelse "0..*" --  "1" Udbudshjemmel
-UdbudtVideregåendeUddannelseOgEnkeltfag "0..*" --  "0..*" Pris : har ansøgningsgebyr
-Pris "1" --  "1..*" Bogføringsoplysninger
-UdbudtVideregåendeUddannelseOgEnkeltfag "0..*" --  "0..*" Pris : har pris for deltagelse
-UdbudtVideregåendeUddannelseOgEnkeltfag "0..*" --  "0..*" Pris : har optagelsesgebyr
-Optagelsesperiode "1" --  "1..*" Ansøgningsfrist
+UdbudtVideregÃ¥endeUddannelse "0..*" --  "1" VideregÃ¥endeUddannelse : udbud af
+UdbudtVideregÃ¥endeUddannelse "0..*" --  "1" Studieordning : udbudt studieordning
+IndskrivningTilVideregÃ¥endeUddannelse "0..*" --  "1" UdbudtVideregÃ¥endeUddannelse : indskrevet pÃ¥
+PrioriteretUddannelse "0..*" --  "1" UdbudtVideregÃ¥endeUddannelse
+UddannelsesansÃ¸gning "0..*" --  "0..1" UdbudtVideregÃ¥endeUddannelse : placeret pÃ¥ venteliste til
+UdbudtVideregÃ¥endeUddannelse "1" --  "0..*" TilbudOmStudiepladsPÃ¥Uddannelse
+Optagelsesperiode "1" --  "0..*" UdbudtVideregÃ¥endeUddannelseOgEnkeltfag
+UdbudtVideregÃ¥endeUddannelse "0..*" --  "1" Udbudshjemmel
+UdbudtVideregÃ¥endeUddannelseOgEnkeltfag "0..*" --  "0..*" Pris : har ansÃ¸gningsgebyr
+Pris "1" --  "1..*" BogfÃ¸ringsoplysninger
+UdbudtVideregÃ¥endeUddannelseOgEnkeltfag "0..*" --  "0..*" Pris : har pris for deltagelse
+UdbudtVideregÃ¥endeUddannelseOgEnkeltfag "0..*" --  "0..*" Pris : har optagelsesgebyr
+Optagelsesperiode "1" --  "1..*" AnsÃ¸gningsfrist
 Optagelsesperiode "0..*" --  "1..*" Studiestart
-TilbudOmStudiepladsPåUddannelse "0..*" --  "1" Studiestart
-Studiepladskapacitet "0..1" --  "0..1" UdbudtStudieforløb : kan have begrænset kapacitet
-Studieforløb "1" --  "0..*" UdbudtStudieforløb
-UdbudtVideregåendeUddannelse "1" --  "1..*" UdbudtStudieforløb
-UdbudtVideregåendeUddannelse --|>  UdbudtVideregåendeUddannelseOgEnkeltfag
-UdbudtVideregåendeUddannelse .right.>  TilrettelæggelsesformEnum
+TilbudOmStudiepladsPÃ¥Uddannelse "0..*" --  "1" Studiestart
+Studiepladskapacitet "0..1" --  "0..1" UdbudtStudieforlÃ¸b : kan have begrÃ¦nset kapacitet
+StudieforlÃ¸b "1" --  "0..*" UdbudtStudieforlÃ¸b
+UdbudtVideregÃ¥endeUddannelse "1" --  "1..*" UdbudtStudieforlÃ¸b
+UdbudtVideregÃ¥endeUddannelse --|>  UdbudtVideregÃ¥endeUddannelseOgEnkeltfag
+UdbudtVideregÃ¥endeUddannelse .right.>  TilrettelÃ¦ggelsesformEnum
 Udbudshjemmel .right.>  UdbudsformEnum
 Udbudshjemmel .right.>  UddannelsessystemEnum
 Optagelsesperiode .right.>  UddannelsestypeEnum
@@ -1342,7 +1342,7 @@ class IndskrivningTilEnkeltfag {
   /indskrivningsnummer: IgnoreBK [[1..1]]
 }
 
-class IndskrivningTilVideregåendeUddannelse {
+class IndskrivningTilVideregÃ¥endeUddannelse {
   dispensationsindskrivning: ? [[1..1]]
   uddannelsesindskrivningstype: Picklist [[1..1]]
   <<BK>>
@@ -1361,7 +1361,7 @@ enum IndskrivningsstatusEnum <<enum>> {
   pauseBarsel
   pauseOrlov
   udmeldtAfbrudt
-  udmeldtBestået
+  udmeldtBestÃ¥et
   udmeldtBortvist
   pauseBortvist
   nedsatStudieaktivitet
@@ -1375,7 +1375,7 @@ enum EnkeltfagsindskrivningstypeEnum <<enum>> {
   MeritIndskrivning
   MeritSidefagsIndskrivning
   MeritTilvalgsIndskrivning
-  SærskiltModulIndskrivning
+  SÃ¦rskiltModulIndskrivning
   TompladsIndskrivning
   UdvekslingsIndskrivning
   SuppleringsIndskrivning
@@ -1389,25 +1389,25 @@ enum UddannelsesindskrivningstypeEnum <<enum>> {
   Standardindskrivning
 }
 
-UdbudtEnkeltfag "1..*" --  "0..*" IndskrivningTilEnkeltfag : indskrevet på
-IndskrivningTilVideregåendeUddannelse "0..*" --  "1" UdbudtVideregåendeUddannelse : indskrevet på
-IndskrivningTilVideregåendeUddannelse "0..*" --  "1" Studieordning : indskrevet til
-IndskrivningTilVideregåendeUddannelse "0..*" --  "0..1" Studieforløb : valgt forløb
-IndskrivningTilVideregåendeUddannelse "1" --  "1" PersonligtStudieforløb
-Eksamensbevis "0..1" --  "1" IndskrivningTilVideregåendeUddannelse
+UdbudtEnkeltfag "1..*" --  "0..*" IndskrivningTilEnkeltfag : indskrevet pÃ¥
+IndskrivningTilVideregÃ¥endeUddannelse "0..*" --  "1" UdbudtVideregÃ¥endeUddannelse : indskrevet pÃ¥
+IndskrivningTilVideregÃ¥endeUddannelse "0..*" --  "1" Studieordning : indskrevet til
+IndskrivningTilVideregÃ¥endeUddannelse "0..*" --  "0..1" StudieforlÃ¸b : valgt forlÃ¸b
+IndskrivningTilVideregÃ¥endeUddannelse "1" --  "1" PersonligtStudieforlÃ¸b
+Eksamensbevis "0..1" --  "1" IndskrivningTilVideregÃ¥endeUddannelse
 Enkeltfagsbevis "0..1" --  "1" IndskrivningTilEnkeltfag
-IndskrivningTilVideregåendeUddannelse "1" --  "0..*" AnsøgningOmForhåndsgodkendelse : ansøger
-Meritansøgning "0..*" --  "1" IndskrivningTilVideregåendeUddannelse : ansøger
-TilbudOmStudiepladsPåUddannelse "1" --  "0..1" IndskrivningTilVideregåendeUddannelse : accept medfører
-TilbudOmStudiepladsPåEnkeltfag "0..*" --  "0..1" IndskrivningTilEnkeltfag : accept medfører
-IndskrivningTilEnkeltfag "1" --  "1" PersonligtEnkeltfagsforløb
-IndskrivningTilVideregåendeUddannelse "1" --  "0..*" EksterntOpholdsansøgning
+IndskrivningTilVideregÃ¥endeUddannelse "1" --  "0..*" AnsÃ¸gningOmForhÃ¥ndsgodkendelse : ansÃ¸ger
+MeritansÃ¸gning "0..*" --  "1" IndskrivningTilVideregÃ¥endeUddannelse : ansÃ¸ger
+TilbudOmStudiepladsPÃ¥Uddannelse "1" --  "0..1" IndskrivningTilVideregÃ¥endeUddannelse : accept medfÃ¸rer
+TilbudOmStudiepladsPÃ¥Enkeltfag "0..*" --  "0..1" IndskrivningTilEnkeltfag : accept medfÃ¸rer
+IndskrivningTilEnkeltfag "1" --  "1" PersonligtEnkeltfagsforlÃ¸b
+IndskrivningTilVideregÃ¥endeUddannelse "1" --  "0..*" EksterntOpholdsansÃ¸gning
 AdgangsgivendeErhvervserfaring "0..*" --  "1" Adgangsgrundlag
 IndskrivningTilEnkeltfag "0..*" --  "0..1" Udvekslingsaftale : under 
-IndskrivningTilVideregåendeUddannelse --|>  Indskrivning
+IndskrivningTilVideregÃ¥endeUddannelse --|>  Indskrivning
 IndskrivningTilEnkeltfag --|>  Indskrivning
 IndskrivningTilEnkeltfag .right.>  EnkeltfagsindskrivningstypeEnum
-IndskrivningTilVideregåendeUddannelse .right.>  UddannelsesindskrivningstypeEnum
+IndskrivningTilVideregÃ¥endeUddannelse .right.>  UddannelsesindskrivningstypeEnum
 !endsub
 
 !startsub 1_7_2_Udbudt_enkeltfag
@@ -1435,7 +1435,7 @@ class UdbudtEnkeltfagSomFagspecifiktKursus {
 class UdbudtEnkeltfagSomKortKursus {
 }
 
-class UdbudtEnkeltfagSomSærskiltModul {
+class UdbudtEnkeltfagSomSÃ¦rskiltModul {
 }
 
 class UdbudtEnkeltfagSomSupplering {
@@ -1448,7 +1448,7 @@ UdbudtEnkeltfagFraDeltidsuddannelse --|>  UdbudtEnkeltfag
 UdbudtEnkeltfagSomAdgangskursus --|>  UdbudtEnkeltfag
 UdbudtEnkeltfagSomFagspecifiktKursus --|>  UdbudtEnkeltfag
 UdbudtEnkeltfagSomKortKursus --|>  UdbudtEnkeltfag
-UdbudtEnkeltfagSomSærskiltModul --|>  UdbudtEnkeltfag
+UdbudtEnkeltfagSomSÃ¦rskiltModul --|>  UdbudtEnkeltfag
 UdbudtEnkeltfagSomSupplering --|>  UdbudtEnkeltfag
 !endsub
 
@@ -1457,41 +1457,41 @@ abstract Udmeldelse {
 }
 
 class Selvudmeldelse {
-  udmeldelsesårsag: Picklist [[1..1]]
+  udmeldelsesÃ¥rsag: Picklist [[1..1]]
 }
 
-class GennemførtUdbudtVideregåendeUddannelseOgEnkeltfag {
-  /gennemførselstid: Calculated [[1..1]]
+class GennemfÃ¸rtUdbudtVideregÃ¥endeUddannelseOgEnkeltfag {
+  /gennemfÃ¸rselstid: Calculated [[1..1]]
 }
 
 class AfbrudtIndskrivning {
-  afbrydelsesårsag: Picklist [[1..1]]
+  afbrydelsesÃ¥rsag: Picklist [[1..1]]
   afbrydelsesbegrundelse: ? [[1..1]]
 }
 
-enum AfbrydelsesårsagEnum <<enum>> {
-  død
+enum AfbrydelsesÃ¥rsagEnum <<enum>> {
+  dÃ¸d
   permanentbortvist
-  studieaktivitetskravFørsteårsprøve
-  opbrugtprøveforsøg
+  studieaktivitetskravFÃ¸rsteÃ¥rsprÃ¸ve
+  opbrugtprÃ¸veforsÃ¸g
   betingelseIkkeOpfyldt
   ikkeBetalt
   studieaktivitetskravMaksimalstudietid
-  studieaktivitetskravStudiestartsprøve
-  studieaktivitetskravLøbendestudieaktivitet
-  ikkeMødtOp
+  studieaktivitetskravStudiestartsprÃ¸ve
+  studieaktivitetskravLÃ¸bendestudieaktivitet
+  ikkeMÃ¸dtOp
   studieskift
 }
 
-enum UdmeldelsesårsagEnum <<enum>> {
-  Lokalt defineret værdiliste
+enum UdmeldelsesÃ¥rsagEnum <<enum>> {
+  Lokalt defineret vÃ¦rdiliste
 }
 
 Selvudmeldelse --|>  Udmeldelse
-GennemførtUdbudtVideregåendeUddannelseOgEnkeltfag --|>  Udmeldelse
+GennemfÃ¸rtUdbudtVideregÃ¥endeUddannelseOgEnkeltfag --|>  Udmeldelse
 AfbrudtIndskrivning --|>  Udmeldelse
-AfbrudtIndskrivning .right.>  AfbrydelsesårsagEnum
-Selvudmeldelse .right.>  UdmeldelsesårsagEnum
+AfbrudtIndskrivning .right.>  AfbrydelsesÃ¥rsagEnum
+Selvudmeldelse .right.>  UdmeldelsesÃ¥rsagEnum
 !endsub
 
 !startsub 3_3_Hold
@@ -1502,7 +1502,7 @@ class Holdbegivenhed {
   /holdkode: IgnoreBK [[1..1]]
 }
 
-class Holdønske {
+class HoldÃ¸nske {
   holdprioritet: Number.0 [[1..1]]
   <<BK>>
   /holdkode: IgnoreBK [[1..1]]
@@ -1513,8 +1513,8 @@ class Holdønske {
 }
 
 class Hold {
-  holdstørrelseMaximum: ? [[0..1]]
-  holdstørrelseMinimum: Number.0 [[0..1]]
+  holdstÃ¸rrelseMaximum: ? [[0..1]]
+  holdstÃ¸rrelseMinimum: Number.0 [[0..1]]
   holdnavn: Text80 [[1..1]]
   <<BK>>
   holdkode: AutoNum [[1..1]]
@@ -1524,11 +1524,11 @@ class HoldBegivenhedPerson {
   orgPersonAnsvarsrolle: ? [[1..1]]
 }
 
-TilmeldingTilUdbudtFagelement "1" --  "0..*" Holdønske : tilmelding kan indeholde holdønsker
-Holdønske "0..*" --  "1" Hold
-UdbudtLæringsaktivitet "1..*" --  "1..*" Hold
+TilmeldingTilUdbudtFagelement "1" --  "0..*" HoldÃ¸nske : tilmelding kan indeholde holdÃ¸nsker
+HoldÃ¸nske "0..*" --  "1" Hold
+UdbudtLÃ¦ringsaktivitet "1..*" --  "1..*" Hold
 Holdbegivenhed "1..*" --  "1" Hold
-TilmeldingTilUdbudtLæringsaktivitet "0..*" --  "1..*" Hold : holdplacering
+TilmeldingTilUdbudtLÃ¦ringsaktivitet "0..*" --  "1..*" Hold : holdplacering
 Holdbegivenhed "1" --  "0..*" HoldBegivenhedPerson
 HoldBegivenhedPerson "0..*" --  "1" OrgPerson
 !endsub
@@ -1543,81 +1543,81 @@ class Uddannelsesbarsel {
 }
 
 class Uddannelsesorlov {
-  orlovsårsag: Picklist [[1..1]]
+  orlovsÃ¥rsag: Picklist [[1..1]]
 }
 
 class MidlertidigBortvisning {
-  bortvisningsårsag: Picklist [[1..1]]
+  bortvisningsÃ¥rsag: Picklist [[1..1]]
 }
 
-class AnsøgningOmUddannelsespause {
+class AnsÃ¸gningOmUddannelsespause {
   godkendelsesstatus: Picklist [[1..1]]
   <<BK>>
-  ansøgningsnummer: IgnoreBK [[1..1]]
+  ansÃ¸gningsnummer: IgnoreBK [[1..1]]
 }
 
-enum OrlovsårsagEnum <<enum>> {
+enum OrlovsÃ¥rsagEnum <<enum>> {
   egenSygdom
   barselAdoption
-  værnepligt
-  øvrigOrlov
+  vÃ¦rnepligt
+  Ã¸vrigOrlov
   plejeorlov
   udsendelseVedForsvaret
   andreOffentligeHverv
   barsel
 }
 
-enum BortvisningsårsagEnum <<enum>> {
-  Lokalt defineret værdiliste
+enum BortvisningsÃ¥rsagEnum <<enum>> {
+  Lokalt defineret vÃ¦rdiliste
 }
 
-Indskrivning "1" --  "0..*" AnsøgningOmUddannelsespause
-AnsøgningOmUddannelsespause "1" --  "0..1" Uddannelsesorlov
+Indskrivning "1" --  "0..*" AnsÃ¸gningOmUddannelsespause
+AnsÃ¸gningOmUddannelsespause "1" --  "0..1" Uddannelsesorlov
 Indskrivning "1" --  "0..*" Uddannelsesbarsel
 Uddannelsesorlov --|>  Uddannelsespause
 MidlertidigBortvisning --|>  Uddannelsespause
-MidlertidigBortvisning .right.>  BortvisningsårsagEnum
-Uddannelsesorlov .right.>  OrlovsårsagEnum
-AnsøgningOmUddannelsespause .right.>  GodkendelsesstatusEnum
+MidlertidigBortvisning .right.>  BortvisningsÃ¥rsagEnum
+Uddannelsesorlov .right.>  OrlovsÃ¥rsagEnum
+AnsÃ¸gningOmUddannelsespause .right.>  GodkendelsesstatusEnum
 !endsub
 
 !startsub 3_6_Bedoemmelse
-class Prøveresultat {
-  /bedømmelsesdato: Calculated [[1..1]]
-  /prøveresultat: Calculated [[1..1]]
-  /gældendeOpgavetitel: Calculated [[1..1]]
+class PrÃ¸veresultat {
+  /bedÃ¸mmelsesdato: Calculated [[1..1]]
+  /prÃ¸veresultat: Calculated [[1..1]]
+  /gÃ¦ldendeOpgavetitel: Calculated [[1..1]]
   <<BK>>
   /fagelementkode: IgnoreBK [[1..1]]
-  /prøveforsøgnr: IgnoreBK [[1..1]]
-  /prøveperiodestartdato: IgnoreBK [[1..1]]
+  /prÃ¸veforsÃ¸gnr: IgnoreBK [[1..1]]
+  /prÃ¸veperiodestartdato: IgnoreBK [[1..1]]
   /indskrivningsnummer: IgnoreBK [[1..1]]
   /udbudsperiodekode: IgnoreBK [[1..1]]
   /udbudsstedkode: IgnoreBK [[1..1]]
 }
 
-class PrøveforsøgMedBedømmelse {
-  bedømmelsesnoter: ? [[1..1]]
+class PrÃ¸veforsÃ¸gMedBedÃ¸mmelse {
+  bedÃ¸mmelsesnoter: ? [[1..1]]
   personligFeedback: ? [[0..1]]
 }
 
-class PrøveforsøgUdenBedømmelse {
-  årsagTilManglendeBedømmelse: Picklist [[1..1]]
+class PrÃ¸veforsÃ¸gUdenBedÃ¸mmelse {
+  Ã¥rsagTilManglendeBedÃ¸mmelse: Picklist [[1..1]]
 }
 
-abstract Prøveaktivitetsforsøg {
+abstract PrÃ¸veaktivitetsforsÃ¸g {
 }
 
-class Prøveaktivitetsresultat {
-  bedømmelsesdato: Date [[1..1]]
-  gældendeOpgavetitel: Text80 [[0..1]]
+class PrÃ¸veaktivitetsresultat {
+  bedÃ¸mmelsesdato: Date [[1..1]]
+  gÃ¦ldendeOpgavetitel: Text80 [[0..1]]
   eksamenssprog: Picklist [[1..1]]
   <<BK>>
   /fagelementkode: IgnoreBK [[1..1]]
   /indskrivningsnummer: IgnoreBK [[1..1]]
-  /prøveaktivitetskode: IgnoreBK [[1..1]]
-  /prøveforsøgsnr: IgnoreBK [[1..1]]
-  /prøveperiodestartdato: IgnoreBK [[1..1]]
-  /prøvevariantkode: IgnoreBK [[1..1]]
+  /prÃ¸veaktivitetskode: IgnoreBK [[1..1]]
+  /prÃ¸veforsÃ¸gsnr: IgnoreBK [[1..1]]
+  /prÃ¸veperiodestartdato: IgnoreBK [[1..1]]
+  /prÃ¸vevariantkode: IgnoreBK [[1..1]]
   /udbudsperiodekode: IgnoreBK [[1..1]]
   /udbudsstedkode: IgnoreBK [[1..1]]
 }
@@ -1627,7 +1627,7 @@ class Resultat {
   karakter: ? [[1..1]]
 }
 
-enum årsagTilManglendeBedømmelseEnum <<enum>> {
+enum Ã¥rsagTilManglendeBedÃ¸mmelseEnum <<enum>> {
   sygdom
   udeblivelse
   manglendeAflevering
@@ -1635,37 +1635,37 @@ enum årsagTilManglendeBedømmelseEnum <<enum>> {
   forSentAflevering
 }
 
-PrøveforsøgMedBedømmelse "0..*" --  "1..*" Ansat : eksaminator
-PrøveforsøgMedBedømmelse "0..*" --  "0..*" OrgPerson : censor
-PrøveforsøgMedBedømmelse "0..*" --  "0..*" Ansat : medbedømmer
-PersonligtFagelement "1" --  "0..*" Prøveresultat
-PrøveforsøgMedBedømmelse "1" --  "1" Prøveaktivitetsresultat
-Prøveresultat "1..*" --  "0..*" Prøveaktivitetsresultat : indgår i 
-PrøveforsøgUdenBedømmelse "0..1" --  "1" PersonligPrøvebegivenhed
-Prøveaktivitetsresultat "1" --  "1..*" Resultat
-PrøveforsøgUdenBedømmelse --|>  Prøveaktivitetsforsøg
-PrøveforsøgMedBedømmelse --|>  Prøveaktivitetsforsøg
-PrøveforsøgUdenBedømmelse .right.>  årsagTilManglendeBedømmelseEnum
-Prøveaktivitetsresultat .right.>  SprogEnum
+PrÃ¸veforsÃ¸gMedBedÃ¸mmelse "0..*" --  "1..*" Ansat : eksaminator
+PrÃ¸veforsÃ¸gMedBedÃ¸mmelse "0..*" --  "0..*" OrgPerson : censor
+PrÃ¸veforsÃ¸gMedBedÃ¸mmelse "0..*" --  "0..*" Ansat : medbedÃ¸mmer
+PersonligtFagelement "1" --  "0..*" PrÃ¸veresultat
+PrÃ¸veforsÃ¸gMedBedÃ¸mmelse "1" --  "1" PrÃ¸veaktivitetsresultat
+PrÃ¸veresultat "1..*" --  "0..*" PrÃ¸veaktivitetsresultat : indgÃ¥r i 
+PrÃ¸veforsÃ¸gUdenBedÃ¸mmelse "0..1" --  "1" PersonligPrÃ¸vebegivenhed
+PrÃ¸veaktivitetsresultat "1" --  "1..*" Resultat
+PrÃ¸veforsÃ¸gUdenBedÃ¸mmelse --|>  PrÃ¸veaktivitetsforsÃ¸g
+PrÃ¸veforsÃ¸gMedBedÃ¸mmelse --|>  PrÃ¸veaktivitetsforsÃ¸g
+PrÃ¸veforsÃ¸gUdenBedÃ¸mmelse .right.>  Ã¥rsagTilManglendeBedÃ¸mmelseEnum
+PrÃ¸veaktivitetsresultat .right.>  SprogEnum
 !endsub
 
 !startsub 4_1_Merit
 abstract Merit {
 }
 
-class Meritansøgning {
+class MeritansÃ¸gning {
   godkendelsesstatus: Picklist [[1..1]]
-  dokumentationBeståelseAfEksterntFagelement: ? [[1..1]]
-  afvisningsårsagsbegrundelse: ? [[1..1]]
+  dokumentationBestÃ¥elseAfEksterntFagelement: ? [[1..1]]
+  afvisningsÃ¥rsagsbegrundelse: ? [[1..1]]
   <<BK>>
-  meritansøgningsnummer: IgnoreBK [[1..1]]
+  meritansÃ¸gningsnummer: IgnoreBK [[1..1]]
   /indskrivningsnummer: IgnoreBK [[1..1]]
 }
 
 class Omfangsmerit {
   omfangsmeritECTS-point: Number.1 [[1..1]]
   <<BK>>
-  /ansøgningsnummer: IgnoreBK [[1..1]]
+  /ansÃ¸gningsnummer: IgnoreBK [[1..1]]
   /fagelementgrupperingskode: IgnoreBK [[1..1]]
   /periodekode: IgnoreBK [[1..1]]
   /indskrivningsnummer: IgnoreBK [[1..1]]
@@ -1675,7 +1675,7 @@ class Omfangsmerit {
 class Fagelementmerit {
   /meritECTS-point: Calculated [[1..1]]
   <<BK>>
-  /ansøgningsnummer: IgnoreBK [[1..1]]
+  /ansÃ¸gningsnummer: IgnoreBK [[1..1]]
   /fagelementkode: IgnoreBK [[1..1]]
   /periodekode: IgnoreBK [[1..1]]
   /indskrivningsnummer: IgnoreBK [[1..1]]
@@ -1695,7 +1695,7 @@ class EksterntFagelement {
   eksterneCredits: ? [[0..1]]
   eksterntResultat: ? [[0..1]]
   eksterntFagelementNavn: Text80 [[1..1]]
-  eksternBeståelsesdato: Date [[0..1]]
+  eksternBestÃ¥elsesdato: Date [[0..1]]
   beskrivelseAfEksternKarakterskala: TekstLong [[0..1]]
   beskrivelseAfEksterntCreditsystem: TekstLong [[0..1]]
   <<BK>>
@@ -1703,65 +1703,65 @@ class EksterntFagelement {
   /organisationskode: IgnoreBK [[1..1]]
 }
 
-class Forhåndsgodkendelse {
-  indløsningsstatus: Picklist [[1..1]]
+class ForhÃ¥ndsgodkendelse {
+  indlÃ¸sningsstatus: Picklist [[1..1]]
   <<BK>>
   /indskrivningsnummer: IgnoreBK [[1..1]]
-  /ansøgningsnummer: IgnoreBK [[1..1]]
+  /ansÃ¸gningsnummer: IgnoreBK [[1..1]]
 }
 
-class AnsøgningOmForhåndsgodkendelse {
+class AnsÃ¸gningOmForhÃ¥ndsgodkendelse {
   godkendelsesstatus: Picklist [[1..1]]
-  afvisningsårsagsbegrundelse: ? [[1..1]]
+  afvisningsÃ¥rsagsbegrundelse: ? [[1..1]]
   <<BK>>
   /indskrivningsnummer: IgnoreBK [[1..1]]
-  /ansøgningsnummer: IgnoreBK [[1..1]]
+  /ansÃ¸gningsnummer: IgnoreBK [[1..1]]
 }
 
-class AnmodningOmIndløsning {
-  dokumentationBeståelseAfEksterntFagelement: ? [[1..1]]
+class AnmodningOmIndlÃ¸sning {
+  dokumentationBestÃ¥elseAfEksterntFagelement: ? [[1..1]]
   <<BK>>
-  /ansøgningsnummer: IgnoreBK [[1..1]]
+  /ansÃ¸gningsnummer: IgnoreBK [[1..1]]
   /indskrivningsnummer: IgnoreBK [[1..1]]
 }
 
-enum IndløsningsstatusEnum <<enum>> {
-  indløst
-  delvistIndløst
-  ikkeIndløst
+enum IndlÃ¸sningsstatusEnum <<enum>> {
+  indlÃ¸st
+  delvistIndlÃ¸st
+  ikkeIndlÃ¸st
 }
 
 enum MerittypeEnum <<enum>> {
-  førStartMerit
-  regulærMerit
+  fÃ¸rStartMerit
+  regulÃ¦rMerit
   tyvstartMerit
 }
 
 EksterntFagelement "0..*" --  "1" Uddannelsesinstitution : fra
 Fagelementmerit "0..1" --  "1" PersonligtFagelement
-Omfangsmerit "0..*" --  "1" PersonligFagelementgruppering : dækker en del af valgfri gruppering
+Omfangsmerit "0..*" --  "1" PersonligFagelementgruppering : dÃ¦kker en del af valgfri gruppering
 Delmerit "1" --  "1" SupplerendeECTS
 Merit "0..1" --  "1..*" EksterntFagelement
-Meritansøgning "0..1" --  "0..*" Merit
-AnsøgningOmForhåndsgodkendelse "1" --  "0..1" Forhåndsgodkendelse : kan medføre
-Forhåndsgodkendelse "1" --  "0..*" AnmodningOmIndløsning
-Merit "0..*" --  "0..1" AnmodningOmIndløsning
-Meritansøgning "0..1" --  "0..*" EksterntFagelement
-Forhåndsgodkendelse "0..1" --  "1..*" EksterntFagelement : gælder for
-EksterntFagelement "1..*" --  "0..1" AnsøgningOmForhåndsgodkendelse : til
-IndskrivningTilVideregåendeUddannelse "1" --  "0..*" AnsøgningOmForhåndsgodkendelse : ansøger
-Meritansøgning "0..*" --  "1" IndskrivningTilVideregåendeUddannelse : ansøger
+MeritansÃ¸gning "0..1" --  "0..*" Merit
+AnsÃ¸gningOmForhÃ¥ndsgodkendelse "1" --  "0..1" ForhÃ¥ndsgodkendelse : kan medfÃ¸re
+ForhÃ¥ndsgodkendelse "1" --  "0..*" AnmodningOmIndlÃ¸sning
+Merit "0..*" --  "0..1" AnmodningOmIndlÃ¸sning
+MeritansÃ¸gning "0..1" --  "0..*" EksterntFagelement
+ForhÃ¥ndsgodkendelse "0..1" --  "1..*" EksterntFagelement : gÃ¦lder for
+EksterntFagelement "1..*" --  "0..1" AnsÃ¸gningOmForhÃ¥ndsgodkendelse : til
+IndskrivningTilVideregÃ¥endeUddannelse "1" --  "0..*" AnsÃ¸gningOmForhÃ¥ndsgodkendelse : ansÃ¸ger
+MeritansÃ¸gning "0..*" --  "1" IndskrivningTilVideregÃ¥endeUddannelse : ansÃ¸ger
 EksterntOphold "0..1" --  "1..*" EksterntFagelement : i forbindelse med
-Forhåndsgodkendelse "0..1" --  "0..1" PersonligtFagelement
-Forhåndsgodkendelse "0..1" --  "0..1" PersonligFagelementgruppering
-AnmodningOmIndløsning "0..*" --  "1" EksterntFagelement
+ForhÃ¥ndsgodkendelse "0..1" --  "0..1" PersonligtFagelement
+ForhÃ¥ndsgodkendelse "0..1" --  "0..1" PersonligFagelementgruppering
+AnmodningOmIndlÃ¸sning "0..*" --  "1" EksterntFagelement
 Omfangsmerit --|>  Merit
 Fagelementmerit --|>  Merit
 Delmerit --|>  Fagelementmerit
 SupplerendeECTS --|>  PersonligtFagelement
-Forhåndsgodkendelse .right.>  IndløsningsstatusEnum
-Meritansøgning .right.>  GodkendelsesstatusEnum
-AnsøgningOmForhåndsgodkendelse .right.>  GodkendelsesstatusEnum
+ForhÃ¥ndsgodkendelse .right.>  IndlÃ¸sningsstatusEnum
+MeritansÃ¸gning .right.>  GodkendelsesstatusEnum
+AnsÃ¸gningOmForhÃ¥ndsgodkendelse .right.>  GodkendelsesstatusEnum
 !endsub
 
 !startsub 3_1_4_Udbudsperiode
@@ -1775,29 +1775,29 @@ class Udbudsperiode {
   udbudsperiodekode: AutoNum [[1..1]]
 }
 
-class Læringsaktivitetsperiode {
-  læringsaktivitetsPeriodeSlutdato: Date [[1..1]]
+class LÃ¦ringsaktivitetsperiode {
+  lÃ¦ringsaktivitetsPeriodeSlutdato: Date [[1..1]]
   <<BK>>
-  læringsaktivitetsPeriodeStartdato: Date [[1..1]]
+  lÃ¦ringsaktivitetsPeriodeStartdato: Date [[1..1]]
   /udbudsperiodekode: IgnoreBK [[1..1]]
 }
 
-class Prøveperiode {
-  prøveperiodeslutdato: Date [[1..1]]
+class PrÃ¸veperiode {
+  prÃ¸veperiodeslutdato: Date [[1..1]]
   tilmeldingsperiode: ? [[1..1]]
   frameldingsperiode: ? [[1..1]]
   <<BK>>
-  prøveperiodestartdato: Date [[1..1]]
+  prÃ¸veperiodestartdato: Date [[1..1]]
   /udbudsperiodekode: IgnoreBK [[1..1]]
 }
 
 PersonligtFagelement "0..*" --  "0..1" Udbudsperiode : planlagt til
 PersonligFagelementgruppering "0..*" --  "0..*" Udbudsperiode : planlagt til
-Læringsaktivitetsperiode "1..*" --  "1" Udbudsperiode
-Prøveperiode "1..*" --  "1" Udbudsperiode
+LÃ¦ringsaktivitetsperiode "1..*" --  "1" Udbudsperiode
+PrÃ¸veperiode "1..*" --  "1" Udbudsperiode
 UdbudtFagelement "0..*" --  "1" Udbudsperiode
-UdbudtLæringsaktivitet "0..*" --  "1" Læringsaktivitetsperiode
-UdbudtPrøve "0..*" --  "1" Prøveperiode
+UdbudtLÃ¦ringsaktivitet "0..*" --  "1" LÃ¦ringsaktivitetsperiode
+UdbudtPrÃ¸ve "0..*" --  "1" PrÃ¸veperiode
 !endsub
 
 !startsub 3_7_Bevis
@@ -1820,7 +1820,7 @@ class Enkeltfagsbevis {
   /indskrivningsnummer: IgnoreBK [[1..1]]
 }
 
-Eksamensbevis "0..1" --  "1" IndskrivningTilVideregåendeUddannelse
+Eksamensbevis "0..1" --  "1" IndskrivningTilVideregÃ¥endeUddannelse
 Enkeltfagsbevis "0..1" --  "1" IndskrivningTilEnkeltfag
 Uddannelsescertifikat "0..*" --  "1" Bevis : vedlagt
 Enkeltfagsbevis --|>  Bevis
@@ -1828,7 +1828,7 @@ Eksamensbevis --|>  Bevis
 !endsub
 
 !startsub 3_4_1_Personligt_studieforloeb
-class PersonligtStudieforløb {
+class PersonligtStudieforlÃ¸b {
   /fortolketResultat: Calculated [[1..1]]
   /karaktergennemsnit: Calculated [[1..1]]
   <<BK>>
@@ -1845,50 +1845,50 @@ class PersonligFagelementgruppering {
 }
 
 class Studiefremdrift {
-  /opnåedeECTS-point: Calculated [[1..1]]
+  /opnÃ¥edeECTS-point: Calculated [[1..1]]
   /forventedeECTS-point: Calculated [[1..1]]
   /forventedeECTS-pointSU: Calculated [[1..1]]
   <<BK>>
   /indskrivningsnummer: IgnoreBK [[1..1]]
 }
 
-class PersonligtEnkeltfagsforløb {
+class PersonligtEnkeltfagsforlÃ¸b {
   <<BK>>
   /indskrivningsnummer: IgnoreBK [[1..1]]
 }
 
-class PersonligForløbsprøve {
-  erBestået: Checkbox [[1..1]]
-  beståelsesdato: Date [[1..1]]
+class PersonligForlÃ¸bsprÃ¸ve {
+  erBestÃ¥et: Checkbox [[1..1]]
+  bestÃ¥elsesdato: Date [[1..1]]
   <<BK>>
   /indskrivningsnummer: IgnoreBK [[1..1]]
-  /studieforløbskode: IgnoreBK [[1..1]]
-  /forløbsprøvenr: IgnoreBK [[1..1]]
+  /studieforlÃ¸bskode: IgnoreBK [[1..1]]
+  /forlÃ¸bsprÃ¸venr: IgnoreBK [[1..1]]
 }
 
-IndskrivningTilVideregåendeUddannelse "1" --  "1" PersonligtStudieforløb
+IndskrivningTilVideregÃ¥endeUddannelse "1" --  "1" PersonligtStudieforlÃ¸b
 GrupperingAfFagelement "1" --  "0..*" PersonligFagelementgruppering
 PersonligtFagelement "1..*" --  "0..1" PersonligFagelementgruppering
-PersonligFagelementgruppering "0..*" --  "0..1" PersonligtStudieforløb
-Omfangsmerit "0..*" --  "1" PersonligFagelementgruppering : dækker en del af valgfri gruppering
-PersonligtStudieforløb "1" --  "1" Studiefremdrift
-Studieforløbsdispensation "0..*" --  "1" PersonligtStudieforløb
+PersonligFagelementgruppering "0..*" --  "0..1" PersonligtStudieforlÃ¸b
+Omfangsmerit "0..*" --  "1" PersonligFagelementgruppering : dÃ¦kker en del af valgfri gruppering
+PersonligtStudieforlÃ¸b "1" --  "1" Studiefremdrift
+StudieforlÃ¸bsdispensation "0..*" --  "1" PersonligtStudieforlÃ¸b
 Fagelementdispensation "0..*" --  "0..1" PersonligFagelementgruppering
 PersonligFagelementgruppering "0..*" --  "0..*" Udbudsperiode : planlagt til
-PersonligtFagelement "0..*" --  "0..1" PersonligtStudieforløb
-IndskrivningTilEnkeltfag "1" --  "1" PersonligtEnkeltfagsforløb
-PersonligFagelementgruppering "0..*" --  "0..1" PersonligtEnkeltfagsforløb
-PersonligtFagelement "0..*" --  "0..1" PersonligtEnkeltfagsforløb
-PersonligtStudieforløb "1" --  "0..*" PersonligForløbsprøve
-PersonligForløbsprøve "0..*" --  "1" Forløbsprøve
-Forhåndsgodkendelse "0..1" --  "0..1" PersonligFagelementgruppering
+PersonligtFagelement "0..*" --  "0..1" PersonligtStudieforlÃ¸b
+IndskrivningTilEnkeltfag "1" --  "1" PersonligtEnkeltfagsforlÃ¸b
+PersonligFagelementgruppering "0..*" --  "0..1" PersonligtEnkeltfagsforlÃ¸b
+PersonligtFagelement "0..*" --  "0..1" PersonligtEnkeltfagsforlÃ¸b
+PersonligtStudieforlÃ¸b "1" --  "0..*" PersonligForlÃ¸bsprÃ¸ve
+PersonligForlÃ¸bsprÃ¸ve "0..*" --  "1" ForlÃ¸bsprÃ¸ve
+ForhÃ¥ndsgodkendelse "0..1" --  "0..1" PersonligFagelementgruppering
 !endsub
 
 !startsub 3_4_2_Personligt_fagelement
 abstract PersonligtFagelement {
 }
 
-class PersonligtProjektorienteretForløb {
+class PersonligtProjektorienteretForlÃ¸b {
 }
 
 class PersonligPraktik {
@@ -1914,30 +1914,30 @@ class EksterntOphold {
   /indskrivningsnummer: IgnoreBK [[1..1]]
 }
 
-class EksterntOpholdsansøgning {
+class EksterntOpholdsansÃ¸gning {
   udvekslingsnomineret: ? [[0..1]]
   learningAgreement: ? [[0..1]]
   eksterntopholdssted: ? [[1..1]]
   grantAgreement: ? [[0..1]]
   <<BK>>
-  /ansøgningsnummer: IgnoreBK [[1..1]]
+  /ansÃ¸gningsnummer: IgnoreBK [[1..1]]
 }
 
-class PersonligPrøveaktivitet {
-  /antalBrugtePrøveaktivitetsforsøg: Calculated [[1..1]]
+class PersonligPrÃ¸veaktivitet {
+  /antalBrugtePrÃ¸veaktivitetsforsÃ¸g: Calculated [[1..1]]
   <<BK>>
   /fagelementkode: IgnoreBK [[1..1]]
   /indskrivningsnummer: IgnoreBK [[1..1]]
-  /prøveaktivitetskode: IgnoreBK [[1..1]]
+  /prÃ¸veaktivitetskode: IgnoreBK [[1..1]]
 }
 
 enum PersonligtFagelementStatusEnum <<enum>> {
   anmodet
   planlagt
   tilmeldt
-  bestået
-  skalGennemføres
-  ikkeBestået
+  bestÃ¥et
+  skalGennemfÃ¸res
+  ikkeBestÃ¥et
   fritagelsePgaDispensation
 }
 
@@ -1946,8 +1946,8 @@ enum EksterntOpholdstypeEnum <<enum>> {
   UdlandsStudieopholdUdenUdvekslingsaftale
   PraktikIDanmark
   PraktikIUdlandet
-  ProjektorienteretForløbIDanmark
-  ProjektorienteretFOrløbIUdlandet
+  ProjektorienteretForlÃ¸bIDanmark
+  ProjektorienteretFOrlÃ¸bIUdlandet
   StudieopholdIDanmark
 }
 
@@ -1960,15 +1960,15 @@ enum EksterntOpholdsformEnum <<enum>> {
 EksterntOphold "0..*" --  "0..1" Uddannelsesinstitution
 EksterntOphold "0..1" --  "1..*" EksterntFagelement : i forbindelse med
 Aftalegrundlag "0..1" --  "0..1" EksterntOphold
-EksterntOphold "0..1" --  "0..1" EksterntOpholdsansøgning : medfører
-EksterntOphold "0..*" --  "0..1" Program : hører under
-IndskrivningTilVideregåendeUddannelse "1" --  "0..*" EksterntOpholdsansøgning
-PersonligPrøveaktivitet "0..*" --  "1" PersonligtFagelement
-PersonligPrøveaktivitet "1" --  "1..*" Prøveaktivitetstilmelding
+EksterntOphold "0..1" --  "0..1" EksterntOpholdsansÃ¸gning : medfÃ¸rer
+EksterntOphold "0..*" --  "0..1" Program : hÃ¸rer under
+IndskrivningTilVideregÃ¥endeUddannelse "1" --  "0..*" EksterntOpholdsansÃ¸gning
+PersonligPrÃ¸veaktivitet "0..*" --  "1" PersonligtFagelement
+PersonligPrÃ¸veaktivitet "1" --  "1..*" PrÃ¸veaktivitetstilmelding
 PersonligPraktik "0..1" --  "1" EksterntOphold
-PersonligtProjektorienteretForløb "0..1" --  "1" EksterntOphold
+PersonligtProjektorienteretForlÃ¸b "0..1" --  "1" EksterntOphold
 EksterntOphold "0..1" --  "0..1" Organisation : hos
-PersonligtProjektorienteretForløb --|>  PersonligtFagelement
+PersonligtProjektorienteretForlÃ¸b --|>  PersonligtFagelement
 PersonligPraktik --|>  PersonligtFagelement
 PersonligAfsluttendeOpgave --|>  PersonligtFagelement
 PersonligProjektopgave --|>  PersonligtFagelement
@@ -1992,7 +1992,7 @@ class Udvekslingsaftale {
 class Udvekslingsprogram {
 }
 
-class Udvekslingsansøgning {
+class UdvekslingsansÃ¸gning {
   indrejsenominering: ? [[1..1]]
   learningAgreement: ? [[0..1]]
   praktiskeForhold: TekstLong [[0..1]]
@@ -2016,126 +2016,126 @@ enum UdvekslingsaftaletypeEnum <<enum>> {
   institutionsaftale
 }
 
-Udvekslingsaftale "0..*" --  "0..1" Udvekslingsprogram : hører under
+Udvekslingsaftale "0..*" --  "0..1" Udvekslingsprogram : hÃ¸rer under
 Uddannelsesinstitution "1" --  "0..*" Udvekslingsaftale : partner institution
-Uddannelsesinstitution "1" --  "0..*" Udvekslingsansøgning : fra
-EksterntOphold "0..*" --  "0..1" Program : hører under
-Udvekslingsaftale "0..1" --  "0..*" Udvekslingsansøgning : under
+Uddannelsesinstitution "1" --  "0..*" UdvekslingsansÃ¸gning : fra
+EksterntOphold "0..*" --  "0..1" Program : hÃ¸rer under
+Udvekslingsaftale "0..1" --  "0..*" UdvekslingsansÃ¸gning : under
 Program "1" --  "0..1" Udvekslingsprogram
 Program "1" --  "0..1" ProjektorienteretOpholdsprogram
 Program "1" --  "0..1" Praktikprogram
 IndskrivningTilEnkeltfag "0..*" --  "0..1" Udvekslingsaftale : under 
-Udvekslingsansøgning "0..*" --  "0..1" OrgPerson : ekstern kontakt
-Udvekslingsansøgning --|>  Enkeltfagsansøgning
+UdvekslingsansÃ¸gning "0..*" --  "0..1" OrgPerson : ekstern kontakt
+UdvekslingsansÃ¸gning --|>  EnkeltfagsansÃ¸gning
 Udvekslingsaftale .right.>  UdvekslingsaftaletypeEnum
 !endsub
 
 !startsub 2_1_1_Ansoegning_om_studieplads
-abstract AnsøgningOmOptagelse {
+abstract AnsÃ¸gningOmOptagelse {
 }
 
 class PrioriteretUddannelse {
   <<BK>>
-  /ansøgningsnummer: IgnoreBK [[1..1]]
+  /ansÃ¸gningsnummer: IgnoreBK [[1..1]]
   /prioritering: IgnoreBK [[1..1]]
 }
 
 class FagligVurdering {
-  ansøgningsrangering: Number.0 [[1..1]]
-  afgørelsesbegrundelse: ? [[1..1]]
-  ansøgningspoint: Number.1 [[1..1]]
+  ansÃ¸gningsrangering: Number.0 [[1..1]]
+  afgÃ¸relsesbegrundelse: ? [[1..1]]
+  ansÃ¸gningspoint: Number.1 [[1..1]]
   <<BK>>
-  /ansøgningsnummer: IgnoreBK [[1..1]]
+  /ansÃ¸gningsnummer: IgnoreBK [[1..1]]
   /prioriteringsrangering: IgnoreBK [[1..1]]
 }
 
-class ErhvervsmæssigBaggrund {
+class ErhvervsmÃ¦ssigBaggrund {
   godkendt: Checkbox [[1..1]]
 }
 
-abstract Enkeltfagsansøgning {
+abstract EnkeltfagsansÃ¸gning {
 }
 
-class Uddannelsesansøgning {
+class UddannelsesansÃ¸gning {
   uddannelsestype: Picklist [[1..1]]
   <<BK>>
-  /ansøgningsnummer: IgnoreBK [[1..1]]
+  /ansÃ¸gningsnummer: IgnoreBK [[1..1]]
 }
 
 class PrioriteretEnkeltfag {
   <<BK>>
-  /ansøgningsnummer: IgnoreBK [[1..1]]
+  /ansÃ¸gningsnummer: IgnoreBK [[1..1]]
   /prioritering: IgnoreBK [[1..1]]
 }
 
-class MeritPladsAnsøgning {
+class MeritPladsAnsÃ¸gning {
 }
 
-class TompladsAnsøgning {
+class TompladsAnsÃ¸gning {
 }
 
-class EnkeltfagFraDeltidsuddannelsesansøgning {
+class EnkeltfagFraDeltidsuddannelsesansÃ¸gning {
 }
 
 class AndenBaggrund {
   godkendt: Checkbox [[1..1]]
 }
 
-class Optagelsesprøveresultat {
-  bestået: ? [[1..1]]
+class OptagelsesprÃ¸veresultat {
+  bestÃ¥et: ? [[1..1]]
 }
 
-abstract Ansøgningsrangering {
+abstract AnsÃ¸gningsrangering {
 }
 
-class Ansøgningsgebyr {
-  beløb: Currency [[1..1]]
+class AnsÃ¸gningsgebyr {
+  belÃ¸b: Currency [[1..1]]
   betalingsdato: Date [[1..1]]
   betalingsstatus: Picklist [[1..1]]
 }
 
-class AdgangskursusAnsøgning {
+class AdgangskursusAnsÃ¸gning {
 }
 
-class FagspecifiktKursusAnsøgning {
+class FagspecifiktKursusAnsÃ¸gning {
 }
 
-class KortKursusAnsøgning {
+class KortKursusAnsÃ¸gning {
 }
 
-class SærskiltModulAnsøgning {
+class SÃ¦rskiltModulAnsÃ¸gning {
 }
 
 class Optagelsesdispensation {
   optagelsesdispensationstype: Picklist [[1..1]]
 }
 
-class Optagelsesdispensationsansøgning {
+class OptagelsesdispensationsansÃ¸gning {
   godkendelsesstatus: Picklist [[1..1]]
 }
 
-class SuppleringsAnsøgning {
+class SuppleringsAnsÃ¸gning {
 }
 
-class KotAnsøgning {
+class KotAnsÃ¸gning {
   erStandby: Checkbox [[0..1]]
-  ønskerUdskudtStart: ? [[0..1]]
-  harBeståetKandidat: Checkbox [[0..1]]
-  harFåetTIlsagn: Checkbox [[0..1]]
+  Ã¸nskerUdskudtStart: ? [[0..1]]
+  harBestÃ¥etKandidat: Checkbox [[0..1]]
+  harFÃ¥etTIlsagn: Checkbox [[0..1]]
   Studieretning: ? [[0..1]]
-  ToÅrsRegel: ? [[0..1]]
+  ToÃ…rsRegel: ? [[0..1]]
   iGangMedSuppleringskursus: ? [[0..1]]
   tilmeldtSuppleringskursus: ? [[0..1]]
-  optagelsesDkAnsøgerId: ? [[1..1]]
-  optagelsesDkAnsøgningsId: ? [[1..1]]
+  optagelsesDkAnsÃ¸gerId: ? [[1..1]]
+  optagelsesDkAnsÃ¸gningsId: ? [[1..1]]
   erDigital: Checkbox [[1..1]]
   optagelseDkStatus: ? [[1..1]]
-  optagelseDKSenesteÆndring: ? [[0..1]]
+  optagelseDKSenesteÃ†ndring: ? [[0..1]]
   underskriftTidspunkt: Number.1 [[0..1]]
   erTidligereOptaget: Number.1 [[0..1]]
-  harSøgtGrønladskSærordning: Checkbox [[0..1]]
+  harSÃ¸gtGrÃ¸nladskSÃ¦rordning: Checkbox [[0..1]]
   udenlandskEksamenLand: ? [[0..1]]
-  udenlandskEksamenÅr: ? [[0..1]]
+  udenlandskEksamenÃ…r: ? [[0..1]]
   eksamensresultatGenberegnet: ? [[0..1]]
   resultatErGenberegnet: ? [[0..1]]
   bilag: ? [[0..*]]
@@ -2151,67 +2151,67 @@ enum OptagelsesstatusEnum <<enum>> {
   tilbudtBetingetOptagelse
   afventerBehandling
   manglendeBetaling
-  lukketPgaOptagPåHøjerePrioritet
-  tilbudAfslået
+  lukketPgaOptagPÃ¥HÃ¸jerePrioritet
+  tilbudAfslÃ¥et
   underAdministrativBehandling
-  påventeliste
+  pÃ¥venteliste
   annulleret
 }
 
-enum AnsøgningsstatusEnum <<enum>> {
+enum AnsÃ¸gningsstatusEnum <<enum>> {
   modtaget
   underbehandling
   afsluttet
   annulleret
 }
 
-enum AfvisningsårsagEnum <<enum>> {
+enum AfvisningsÃ¥rsagEnum <<enum>> {
   betingelserIkkeOpfyldt
-  manglendeAnsøgningsgebyr
+  manglendeAnsÃ¸gningsgebyr
   manglendeDokumentation
   manglendeKvalifikationer
   manglendeStudieplads
-  overskredetAnsøgningsfrist
-  pgaAdgangsprøve
-  pgaOptagelsesprøve
+  overskredetAnsÃ¸gningsfrist
+  pgaAdgangsprÃ¸ve
+  pgaOptagelsesprÃ¸ve
   pgaRegelbrud
 }
 
 enum OptagelsesdispensationstypeEnum <<enum>> {
   afvigelseAdgangskrav
-  AfvigelseAnsøgningsfristOptagelse
+  AfvigelseAnsÃ¸gningsfristOptagelse
 }
 
-Uddannelsesansøgning "1" --  "0..1" TilbudOmStudiepladsPåUddannelse : fremsendt tilbud
-Uddannelsesansøgning "1" --  "1..*" PrioriteretUddannelse : ansøgning indeholder
-PrioriteretUddannelse "0..*" --  "1" UdbudtVideregåendeUddannelse
-Uddannelsesansøgning "0..*" --  "0..1" UdbudtVideregåendeUddannelse : placeret på venteliste til
-ErhvervsmæssigBaggrund "0..1" --  "1" AnsøgningOmOptagelse : ansøgning indeholder
-Enkeltfagsansøgning "1" --  "1..*" PrioriteretEnkeltfag : ansøgning indeholder
+UddannelsesansÃ¸gning "1" --  "0..1" TilbudOmStudiepladsPÃ¥Uddannelse : fremsendt tilbud
+UddannelsesansÃ¸gning "1" --  "1..*" PrioriteretUddannelse : ansÃ¸gning indeholder
+PrioriteretUddannelse "0..*" --  "1" UdbudtVideregÃ¥endeUddannelse
+UddannelsesansÃ¸gning "0..*" --  "0..1" UdbudtVideregÃ¥endeUddannelse : placeret pÃ¥ venteliste til
+ErhvervsmÃ¦ssigBaggrund "0..1" --  "1" AnsÃ¸gningOmOptagelse : ansÃ¸gning indeholder
+EnkeltfagsansÃ¸gning "1" --  "1..*" PrioriteretEnkeltfag : ansÃ¸gning indeholder
 PrioriteretEnkeltfag "0..*" --  "1" UdbudtEnkeltfag
-AnsøgningOmOptagelse "1" --  "0..1" AndenBaggrund
-Optagelsesprøveresultat "0..*" --  "1" AnsøgningOmOptagelse
-Ansøgningsrangering "1" --  "0..1" FagligVurdering
-Ansøgningsgebyr "0..1" --  "1" AnsøgningOmOptagelse
-Optagelsesdispensation "0..1" --  "1" AnsøgningOmOptagelse
-AnsøgningOmOptagelse "0..1" --  "0..*" Optagelsesdispensationsansøgning
-Optagelsesdispensationsansøgning "1" --  "0..*" Optagelsesdispensation
-Uddannelsesansøgning --|>  AnsøgningOmOptagelse
-PrioriteretUddannelse --|>  Ansøgningsrangering
-PrioriteretEnkeltfag --|>  Ansøgningsrangering
-SærskiltModulAnsøgning --|>  Enkeltfagsansøgning
-FagspecifiktKursusAnsøgning --|>  Enkeltfagsansøgning
-AdgangskursusAnsøgning --|>  Enkeltfagsansøgning
-TompladsAnsøgning --|>  Enkeltfagsansøgning
-MeritPladsAnsøgning --|>  Enkeltfagsansøgning
-EnkeltfagFraDeltidsuddannelsesansøgning --|>  Enkeltfagsansøgning
-KortKursusAnsøgning --|>  Enkeltfagsansøgning
-SuppleringsAnsøgning --|>  Enkeltfagsansøgning
-KotAnsøgning --|>  Uddannelsesansøgning
-Uddannelsesansøgning .right.>  UddannelsestypeEnum
+AnsÃ¸gningOmOptagelse "1" --  "0..1" AndenBaggrund
+OptagelsesprÃ¸veresultat "0..*" --  "1" AnsÃ¸gningOmOptagelse
+AnsÃ¸gningsrangering "1" --  "0..1" FagligVurdering
+AnsÃ¸gningsgebyr "0..1" --  "1" AnsÃ¸gningOmOptagelse
+Optagelsesdispensation "0..1" --  "1" AnsÃ¸gningOmOptagelse
+AnsÃ¸gningOmOptagelse "0..1" --  "0..*" OptagelsesdispensationsansÃ¸gning
+OptagelsesdispensationsansÃ¸gning "1" --  "0..*" Optagelsesdispensation
+UddannelsesansÃ¸gning --|>  AnsÃ¸gningOmOptagelse
+PrioriteretUddannelse --|>  AnsÃ¸gningsrangering
+PrioriteretEnkeltfag --|>  AnsÃ¸gningsrangering
+SÃ¦rskiltModulAnsÃ¸gning --|>  EnkeltfagsansÃ¸gning
+FagspecifiktKursusAnsÃ¸gning --|>  EnkeltfagsansÃ¸gning
+AdgangskursusAnsÃ¸gning --|>  EnkeltfagsansÃ¸gning
+TompladsAnsÃ¸gning --|>  EnkeltfagsansÃ¸gning
+MeritPladsAnsÃ¸gning --|>  EnkeltfagsansÃ¸gning
+EnkeltfagFraDeltidsuddannelsesansÃ¸gning --|>  EnkeltfagsansÃ¸gning
+KortKursusAnsÃ¸gning --|>  EnkeltfagsansÃ¸gning
+SuppleringsAnsÃ¸gning --|>  EnkeltfagsansÃ¸gning
+KotAnsÃ¸gning --|>  UddannelsesansÃ¸gning
+UddannelsesansÃ¸gning .right.>  UddannelsestypeEnum
 Optagelsesdispensation .right.>  OptagelsesdispensationstypeEnum
-Optagelsesdispensationsansøgning .right.>  GodkendelsesstatusEnum
-Ansøgningsgebyr .right.>  BetalingsstatusEnum
+OptagelsesdispensationsansÃ¸gning .right.>  GodkendelsesstatusEnum
+AnsÃ¸gningsgebyr .right.>  BetalingsstatusEnum
 !endsub
 
 !startsub 2_1_1_1_Uddannelsesbaggrund
@@ -2223,28 +2223,28 @@ class Uddannelsesbaggrund {
 class AdgangsgivendeEksamen {
   adgangsgivendeEksamenDS-kode: Text80 [[1..1]]
   adgangsgivendeEksamenNavn: Text80 [[1..1]]
-  adgangsgivendeEksamenÅr: ? [[1..1]]
+  adgangsgivendeEksamenÃ…r: ? [[1..1]]
   retskrav: ? [[1..1]]
   adgangskvotient: ? [[1..1]]
-  bedømmelsesform: Picklist [[1..1]]
+  bedÃ¸mmelsesform: Picklist [[1..1]]
   eksamensresultat: ? [[1..1]]
   eksamenstype: ? [[1..1]]
   eksamenstypeTekstbeskrivelse: TekstLong [[1..1]]
-  eksamensår: ? [[1..1]]
+  eksamensÃ¥r: ? [[1..1]]
   karaktergennemsnit: ? [[1..1]]
   udmeldelsesperiode: ? [[1..1]]
-  udstedelsesår: ? [[1..1]]
-  årskaraktergennemsnit: ? [[1..1]]
+  udstedelsesÃ¥r: ? [[1..1]]
+  Ã¥rskaraktergennemsnit: ? [[1..1]]
   adgangskvotient: ? [[1..1]]
-  bedømmelsesform: ? [[1..1]]
+  bedÃ¸mmelsesform: ? [[1..1]]
   eksamensresultat: ? [[1..1]]
   eksamenstype: ? [[1..1]]
   eksamenstypeTekstbeskrivelse: TekstLong [[1..1]]
-  eksamensår: ? [[1..1]]
+  eksamensÃ¥r: ? [[1..1]]
   karaktergennemsnit: ? [[1..1]]
   udmeldelsesperiode: ? [[1..1]]
-  udstedelsesår: ? [[1..1]]
-  årskaraktergennemsnit: ? [[1..1]]
+  udstedelsesÃ¥r: ? [[1..1]]
+  Ã¥rskaraktergennemsnit: ? [[1..1]]
   adgangsgivendeEksamenNavn: Text80 [[1..1]]
   adgangsgivendeEksamensTerminAar: ? [[1..1]]
   <<BK>>
@@ -2253,35 +2253,35 @@ class AdgangsgivendeEksamen {
 }
 
 class TidligereOptag {
-  afbrudtÅr: ? [[0..1]]
+  afbrudtÃ…r: ? [[0..1]]
   aktivIndskrivning: ? [[1..1]]
   ECTS-point: Number.1 [[0..1]]
-  forventetBeståetÅr: ? [[1..1]]
-  indskrivningsstartår: ? [[1..1]]
-  optagelsesområde: ? [[1..1]]
+  forventetBestÃ¥etÃ…r: ? [[1..1]]
+  indskrivningsstartÃ¥r: ? [[1..1]]
+  optagelsesomrÃ¥de: ? [[1..1]]
 }
 
 class Fagniveau {
-  bedømmelsesår: ? [[1..1]]
+  bedÃ¸mmelsesÃ¥r: ? [[1..1]]
   fagkode: Text80 [[1..1]]
   fagnavn: Text80 [[1..1]]
   harMerit: Checkbox [[1..1]]
   karakter: ? [[1..1]]
   karaktertype: ? [[1..1]]
   karaktertypeForklaring: ? [[1..1]]
-  karaktervægt: Percent [[1..1]]
+  karaktervÃ¦gt: Percent [[1..1]]
   mundtligtNiveau: ? [[1..1]]
 }
 
-class AndenEksamenEllerPrøve {
-  afbrudtÅr: ? [[0..1]]
+class AndenEksamenEllerPrÃ¸ve {
+  afbrudtÃ…r: ? [[0..1]]
   erStadigOptaget: Checkbox [[1..1]]
   fagnavn: Text80 [[1..1]]
-  forventetBeståetMåned: ? [[0..1]]
+  forventetBestÃ¥etMÃ¥ned: ? [[0..1]]
   karakterMundtlig: ? [[0..1]]
   karakterSkriftlig: ? [[0..1]]
   kursusnavn: Text80 [[1..1]]
-  startÅr: ? [[1..1]]
+  startÃ…r: ? [[1..1]]
   uddannelsesniveau: Picklist [[1..1]]
 }
 
@@ -2289,38 +2289,38 @@ class GymnasialUddannelse {
 }
 
 AdgangsgivendeEksamen "0..*" --  "1" Uddannelsesinstitution : adgangsgivende inst.
-AnsøgningOmOptagelse "1" --  "0..1" Uddannelsesbaggrund : ansøgning indeholder
+AnsÃ¸gningOmOptagelse "1" --  "0..1" Uddannelsesbaggrund : ansÃ¸gning indeholder
 AdgangsgivendeEksamen "0..*" --  "0..1" Adgangsgrundlag
 Uddannelsesbaggrund "1" --  "0..*" TidligereOptag
 Uddannelsesbaggrund "1" --  "0..*" AdgangsgivendeEksamen
-Uddannelsesbaggrund "1" --  "0..*" AndenEksamenEllerPrøve
+Uddannelsesbaggrund "1" --  "0..*" AndenEksamenEllerPrÃ¸ve
 AdgangsgivendeEksamen "1" --  "0..*" Fagniveau
-VideregåendeUddannelse "1" --  "0..*" TidligereOptag
+VideregÃ¥endeUddannelse "1" --  "0..*" TidligereOptag
 GymnasialUddannelse "1" --  "0..*" AdgangsgivendeEksamen
 GymnasialUddannelse --|>  Uddannelse
-AndenEksamenEllerPrøve .right.>  UddannelsesniveauEnum
-AdgangsgivendeEksamen .right.>  BedømmelsesformEnum
+AndenEksamenEllerPrÃ¸ve .right.>  UddannelsesniveauEnum
+AdgangsgivendeEksamen .right.>  BedÃ¸mmelsesformEnum
 !endsub
 
 !startsub 2_1_2_Tilbud_om_studieplads
-class AdgangsprøveResultat {
-  bestået: ? [[1..1]]
+class AdgangsprÃ¸veResultat {
+  bestÃ¥et: ? [[1..1]]
   <<BK>>
-  /ansøgningsnummer: IgnoreBK [[1..1]]
+  /ansÃ¸gningsnummer: IgnoreBK [[1..1]]
 }
 
-class TilbudOmStudiepladsPåUddannelse {
+class TilbudOmStudiepladsPÃ¥Uddannelse {
   svarfrist: Date [[1..1]]
   tilbudsstatus: Picklist [[1..1]]
   <<BK>>
-  /ansøgningsnummer: IgnoreBK [[1..1]]
+  /ansÃ¸gningsnummer: IgnoreBK [[1..1]]
 }
 
-class TilbudOmStudiepladsPåEnkeltfag {
+class TilbudOmStudiepladsPÃ¥Enkeltfag {
   svarfrist: Date [[1..1]]
   tilbudsstatus: Picklist [[1..1]]
   <<BK>>
-  /ansøgningsnummer: IgnoreBK [[1..1]]
+  /ansÃ¸gningsnummer: IgnoreBK [[1..1]]
   /enkeltfagskode: IgnoreBK [[1..1]]
   /udbudsperiodekode: IgnoreBK [[1..1]]
   /udbudsstedkode: IgnoreBK [[1..1]]
@@ -2328,21 +2328,21 @@ class TilbudOmStudiepladsPåEnkeltfag {
 
 enum TilbudsstatusEnum <<enum>> {
   afventerSvar
-  afslået
+  afslÃ¥et
   accepteret
   fortrudtAccepteret
 }
 
-Uddannelsesansøgning "1" --  "0..1" TilbudOmStudiepladsPåUddannelse : fremsendt tilbud
-AdgangsprøveResultat "0..1" --  "1" TilbudOmStudiepladsPåUddannelse
-TilbudOmStudiepladsPåUddannelse "1" --  "0..1" IndskrivningTilVideregåendeUddannelse : accept medfører
-UdbudtVideregåendeUddannelse "1" --  "0..*" TilbudOmStudiepladsPåUddannelse
-Enkeltfagsansøgning "1" --  "0..1" TilbudOmStudiepladsPåEnkeltfag : fremsendt tilbud
-TilbudOmStudiepladsPåEnkeltfag "0..*" --  "1..*" UdbudtEnkeltfag
-TilbudOmStudiepladsPåEnkeltfag "0..*" --  "0..1" IndskrivningTilEnkeltfag : accept medfører
-TilbudOmStudiepladsPåUddannelse "0..*" --  "1" Studiestart
-TilbudOmStudiepladsPåUddannelse .right.>  TilbudsstatusEnum
-TilbudOmStudiepladsPåEnkeltfag .right.>  TilbudsstatusEnum
+UddannelsesansÃ¸gning "1" --  "0..1" TilbudOmStudiepladsPÃ¥Uddannelse : fremsendt tilbud
+AdgangsprÃ¸veResultat "0..1" --  "1" TilbudOmStudiepladsPÃ¥Uddannelse
+TilbudOmStudiepladsPÃ¥Uddannelse "1" --  "0..1" IndskrivningTilVideregÃ¥endeUddannelse : accept medfÃ¸rer
+UdbudtVideregÃ¥endeUddannelse "1" --  "0..*" TilbudOmStudiepladsPÃ¥Uddannelse
+EnkeltfagsansÃ¸gning "1" --  "0..1" TilbudOmStudiepladsPÃ¥Enkeltfag : fremsendt tilbud
+TilbudOmStudiepladsPÃ¥Enkeltfag "0..*" --  "1..*" UdbudtEnkeltfag
+TilbudOmStudiepladsPÃ¥Enkeltfag "0..*" --  "0..1" IndskrivningTilEnkeltfag : accept medfÃ¸rer
+TilbudOmStudiepladsPÃ¥Uddannelse "0..*" --  "1" Studiestart
+TilbudOmStudiepladsPÃ¥Uddannelse .right.>  TilbudsstatusEnum
+TilbudOmStudiepladsPÃ¥Enkeltfag .right.>  TilbudsstatusEnum
 !endsub
 
 !startsub 1_8_Finansiering
@@ -2360,7 +2360,7 @@ class Indskrivningsfinansiering {
 }
 
 class Deltagerfinansiering {
-  beløb: Currency [[1..1]]
+  belÃ¸b: Currency [[1..1]]
   personligAndel: Percent [[1..1]]
   virksomhedsandel: Percent [[1..1]]
   antalRater: Number.0 [[1..1]]
@@ -2375,14 +2375,14 @@ class PersonligBetaling {
 class Faktureringsgrundlag {
   betalingsstatus: Picklist [[1..1]]
   betalingsfrist: Date [[1..1]]
-  beløb: Currency [[1..1]]
+  belÃ¸b: Currency [[1..1]]
   betalingsdato: Date [[0..1]]
 }
 
 enum FinansieringsformEnum <<enum>> {
-  STÅ-finansieret
+  STÃ…-finansieret
   udenlandskSelvfinansieret
-  årselevfinansieret
+  Ã¥rselevfinansieret
   andenOffentligFinansiering
   friplads-ogStipendiefinansieret
   deltagerbetaling
@@ -2390,7 +2390,7 @@ enum FinansieringsformEnum <<enum>> {
 }
 
 enum BetalingsstatusEnum <<enum>> {
-  opkrævet
+  opkrÃ¦vet
   betalt
   krediteret
   annulleret
@@ -2440,28 +2440,28 @@ Indskrivningsfinansiering .right.>  RekvirentEnum
 abstract Studiedispensation {
 }
 
-class Prøvedispensation {
-  prøvedispensationstype: Picklist [[1..1]]
+class PrÃ¸vedispensation {
+  prÃ¸vedispensationstype: Picklist [[1..1]]
 }
 
-class Studieforløbsdispensation {
-  studieforløbsdispensationstype: Picklist [[1..1]]
+class StudieforlÃ¸bsdispensation {
+  studieforlÃ¸bsdispensationstype: Picklist [[1..1]]
 }
 
-class PermanentPrøvedispensation {
-  permanentprøvedispensationstype: Picklist [[1..1]]
+class PermanentPrÃ¸vedispensation {
+  permanentprÃ¸vedispensationstype: Picklist [[1..1]]
 }
 
 class Fagelementdispensation {
   fagelementdispensationstype: Picklist [[1..1]]
 }
 
-class StudiedispensationsAnsøgning {
+class StudiedispensationsAnsÃ¸gning {
   godkendelsesstatus: Picklist [[1..1]]
-  afvisningsårsagsbegrundelse: ? [[1..1]]
-  dispensationsansøgningsbeskrivelse: TekstLong [[1..1]]
+  afvisningsÃ¥rsagsbegrundelse: ? [[1..1]]
+  dispensationsansÃ¸gningsbeskrivelse: TekstLong [[1..1]]
   <<BK>>
-  /ansøgningsnummer: IgnoreBK [[1..1]]
+  /ansÃ¸gningsnummer: IgnoreBK [[1..1]]
 }
 
 class Indskrivningsdispensation {
@@ -2476,142 +2476,142 @@ enum FagelementdispensationstypeEnum <<enum>> {
   FritagelseTilmeldingsbinding
 }
 
-enum PermanentPrøvedispensationstypeEnum <<enum>> {
-  SærligeHjælpemidlerTilladt
-  ÆndretForberedelsestid
-  ÆndretPrøvebegivenhedsform
-  ÆndretPrøvetid
+enum PermanentPrÃ¸vedispensationstypeEnum <<enum>> {
+  SÃ¦rligeHjÃ¦lpemidlerTilladt
+  Ã†ndretForberedelsestid
+  Ã†ndretPrÃ¸vebegivenhedsform
+  Ã†ndretPrÃ¸vetid
   IndividuellePraktiskeForhold
-  IndividuelPrøve
-  Øvrige
+  IndividuelPrÃ¸ve
+  Ã˜vrige
 }
 
-enum StudieforløbsdispensationstypeEnum <<enum>> {
+enum StudieforlÃ¸bsdispensationstypeEnum <<enum>> {
   ECTS-pointkrav
-  ForlængelseStudieforløb
-  FørsteårsprøveUdsættelse
-  StudiestartsprøveUdsættelse
+  ForlÃ¦ngelseStudieforlÃ¸b
+  FÃ¸rsteÃ¥rsprÃ¸veUdsÃ¦ttelse
+  StudiestartsprÃ¸veUdsÃ¦ttelse
   SUaktivitetskrav
   TilladelseEkstraECTS-point
   Tilmeldingskrav
   TilmeldingTilKandidatfagelementer
 }
 
-enum PrøveDispensationstypeEnum <<enum>> {
+enum PrÃ¸veDispensationstypeEnum <<enum>> {
   AfvigelseAfleveringsfrist
-  AfvigelseEksamensforudsætning
-  AfvigelseGruppestørrelse
-  AfvigelsePrøveemne
+  AfvigelseEksamensforudsÃ¦tning
+  AfvigelseGruppestÃ¸rrelse
+  AfvigelsePrÃ¸veemne
   AfvigelseSprogkrav
-  EkstraPrøveforsøg
-  ÆndretPrøvetid
-  IndividuelPrøve
+  EkstraPrÃ¸veforsÃ¸g
+  Ã†ndretPrÃ¸vetid
+  IndividuelPrÃ¸ve
   OverskredetFrameldingsfrist
   OverskredetTilmeldingsfrist
-  SærligeHjælpemidlerTilladt
-  ÆndretBedømmelsesform
-  ÆndretCensurform
-  ÆndretForberedelsestid
-  ÆndretOpgavestørrelse
-  ÆndretPrøvebegivenhedsform
+  SÃ¦rligeHjÃ¦lpemidlerTilladt
+  Ã†ndretBedÃ¸mmelsesform
+  Ã†ndretCensurform
+  Ã†ndretForberedelsestid
+  Ã†ndretOpgavestÃ¸rrelse
+  Ã†ndretPrÃ¸vebegivenhedsform
   IndividuellePraktiskeForhold
-  Øvrige
+  Ã˜vrige
 }
 
-Studieforløbsdispensation "0..*" --  "1" PersonligtStudieforløb
-Prøvetilmelding "1" --  "0..*" Prøvedispensation
-Prøvedispensation "0..*" --  "0..1" PermanentPrøvedispensation : udmøntes i 
+StudieforlÃ¸bsdispensation "0..*" --  "1" PersonligtStudieforlÃ¸b
+PrÃ¸vetilmelding "1" --  "0..*" PrÃ¸vedispensation
+PrÃ¸vedispensation "0..*" --  "0..1" PermanentPrÃ¸vedispensation : udmÃ¸ntes i 
 Fagelementdispensation "0..*" --  "0..1" PersonligtFagelement
 Fagelementdispensation "0..*" --  "0..1" PersonligFagelementgruppering
-StudiedispensationsAnsøgning "0..*" --  "1" Indskrivning
-StudiedispensationsAnsøgning "1" --  "0..1" Studiedispensation
-PermanentPrøvedispensation "0..*" --  "1" Studerende
-Prøvedispensation --|>  Studiedispensation
-Studieforløbsdispensation --|>  Studiedispensation
-PermanentPrøvedispensation --|>  Studiedispensation
+StudiedispensationsAnsÃ¸gning "0..*" --  "1" Indskrivning
+StudiedispensationsAnsÃ¸gning "1" --  "0..1" Studiedispensation
+PermanentPrÃ¸vedispensation "0..*" --  "1" Studerende
+PrÃ¸vedispensation --|>  Studiedispensation
+StudieforlÃ¸bsdispensation --|>  Studiedispensation
+PermanentPrÃ¸vedispensation --|>  Studiedispensation
 Fagelementdispensation --|>  Studiedispensation
 Indskrivningsdispensation --|>  Studiedispensation
 Fagelementdispensation .right.>  FagelementdispensationstypeEnum
-PermanentPrøvedispensation .right.>  PermanentPrøvedispensationstypeEnum
-Studieforløbsdispensation .right.>  StudieforløbsdispensationstypeEnum
-Prøvedispensation .right.>  PrøveDispensationstypeEnum
-StudiedispensationsAnsøgning .right.>  GodkendelsesstatusEnum
+PermanentPrÃ¸vedispensation .right.>  PermanentPrÃ¸vedispensationstypeEnum
+StudieforlÃ¸bsdispensation .right.>  StudieforlÃ¸bsdispensationstypeEnum
+PrÃ¸vedispensation .right.>  PrÃ¸veDispensationstypeEnum
+StudiedispensationsAnsÃ¸gning .right.>  GodkendelsesstatusEnum
 !endsub
 
 !startsub 1_3_2_Studieforloebets_fagelementer
-class StudieforløbFagelementgruppering {
-  karaktervægt: Percent [[1..1]]
-  erEtSammenvægtetResultat: Percent [[1..1]]
-  medtagesPåBevis: Checkbox [[1..1]]
-  rækkefølgePåBevis: ? [[0..1]]
+class StudieforlÃ¸bFagelementgruppering {
+  karaktervÃ¦gt: Percent [[1..1]]
+  erEtSammenvÃ¦gtetResultat: Percent [[1..1]]
+  medtagesPÃ¥Bevis: Checkbox [[1..1]]
+  rÃ¦kkefÃ¸lgePÃ¥Bevis: ? [[0..1]]
   valgfrihedsgrad: Calculated [[1..1]]
-  beståECTS-pointMaksimum: Number.0 [[1..1]]
-  beståECTS-pointMinimum: Number.0 [[1..1]]
+  bestÃ¥ECTS-pointMaksimum: Number.0 [[1..1]]
+  bestÃ¥ECTS-pointMinimum: Number.0 [[1..1]]
   anvendelsestype: Picklist [[0..1]]
   <<BK>>
-  /studieforløbskode: IgnoreBK [[1..1]]
+  /studieforlÃ¸bskode: IgnoreBK [[1..1]]
   /fagelementgrupperingskode: IgnoreBK [[1..1]]
   /parentFagelementgrupperingskode: IgnoreBK [[0..1]]
 }
 
-class FagelementIStudieforløbsperiode {
-  erPrimærAnbefaletPlacering: Checkbox [[1..1]]
+class FagelementIStudieforlÃ¸bsperiode {
+  erPrimÃ¦rAnbefaletPlacering: Checkbox [[1..1]]
   <<BK>>
   /Fagelementgrupperingskode: IgnoreBK [[0..1]]
-  /studieforløbskode: IgnoreBK [[1..1]]
+  /studieforlÃ¸bskode: IgnoreBK [[1..1]]
   /fagelementkode: IgnoreBK [[1..1]]
-  /studieforløbsperiodeRækkefølgeNr: IgnoreBK [[1..1]]
+  /studieforlÃ¸bsperiodeRÃ¦kkefÃ¸lgeNr: IgnoreBK [[1..1]]
   /parentFagelementgrupperingskode: IgnoreBK [[0..1]]
 }
 
-class FagelementgrupperingIStudieforløbsperiode {
+class FagelementgrupperingIStudieforlÃ¸bsperiode {
   placerbareECTS-pointMaksimum: Number.0 [[1..1]]
   placerbareECTS-pointMinimum: Number.0 [[1..1]]
   anbefaletOmfangPlacerbareECTS-point: Number.1 [[0..1]]
   <<BK>>
   /fagelementgrupperingskode: IgnoreBK [[1..1]]
-  /studieforløbskode: IgnoreBK [[1..1]]
-  /studieforløbsperiodeRækkefølgeNr: IgnoreBK [[1..1]]
+  /studieforlÃ¸bskode: IgnoreBK [[1..1]]
+  /studieforlÃ¸bsperiodeRÃ¦kkefÃ¸lgeNr: IgnoreBK [[1..1]]
   /parentFagelementgrupperingskode: IgnoreBK [[0..1]]
 }
 
-class StudieforløbFagelement {
-  medtagesPåBevis: Checkbox [[1..1]]
-  rækkefølgePåBevis: ? [[0..1]]
-  karaktervægt: Percent [[1..1]]
+class StudieforlÃ¸bFagelement {
+  medtagesPÃ¥Bevis: Checkbox [[1..1]]
+  rÃ¦kkefÃ¸lgePÃ¥Bevis: ? [[0..1]]
+  karaktervÃ¦gt: Percent [[1..1]]
   valgfrihedsgrad: Calculated [[1..1]]
   <<BK>>
   /Fagelementkode: IgnoreBK [[1..1]]
   /Fagelementgrupperingskode: IgnoreBK [[0..1]]
-  /studieforløbskode: IgnoreBK [[1..1]]
+  /studieforlÃ¸bskode: IgnoreBK [[1..1]]
   /parentFagelementgrupperingskode: IgnoreBK [[0..1]]
 }
 
 enum ValgfrihedsgradEnum <<enum>> {
   obligatorisk
   valgfrit
-  afgrænsetValgfrit
+  afgrÃ¦nsetValgfrit
 }
 
 enum AnvendelsestypeEnum <<enum>> {
-  lokalt defineret værdiliste
+  lokalt defineret vÃ¦rdiliste
 }
 
-Studieforløb "1" --  "0..*" StudieforløbFagelementgruppering
-GrupperingAfFagelement "1" --  "0..*" StudieforløbFagelementgruppering
-StudieforløbFagelementgruppering "0..*" --  "0..1" Fagområde : henføres til
-Studieforløbsperiode "1" --  "0..*" FagelementgrupperingIStudieforløbsperiode
-Studieforløbsperiode "1" --  "0..*" FagelementIStudieforløbsperiode
-StudieforløbFagelementgruppering "1" --  "0..*" FagelementgrupperingIStudieforløbsperiode
-StudieforløbFagelement "0..*" --  "0..1" StudieforløbFagelementgruppering
-StudieforløbFagelement "0..*" --  "0..1" FagelementIFagelementgruppering
-StudieforløbFagelement "0..*" --  "1" Fagelement
-FagelementIStudieforløbsperiode "0..*" --  "1" StudieforløbFagelement
-StudieforløbFagelement "1..*" --  "1" Studieforløb
-PersonligtFagelement "0..*" --  "0..1" StudieforløbFagelement
-StudieforløbFagelementgruppering .right.>  ValgfrihedsgradEnum
-StudieforløbFagelement .right.>  ValgfrihedsgradEnum
-StudieforløbFagelementgruppering .right.>  AnvendelsestypeEnum
+StudieforlÃ¸b "1" --  "0..*" StudieforlÃ¸bFagelementgruppering
+GrupperingAfFagelement "1" --  "0..*" StudieforlÃ¸bFagelementgruppering
+StudieforlÃ¸bFagelementgruppering "0..*" --  "0..1" FagomrÃ¥de : henfÃ¸res til
+StudieforlÃ¸bsperiode "1" --  "0..*" FagelementgrupperingIStudieforlÃ¸bsperiode
+StudieforlÃ¸bsperiode "1" --  "0..*" FagelementIStudieforlÃ¸bsperiode
+StudieforlÃ¸bFagelementgruppering "1" --  "0..*" FagelementgrupperingIStudieforlÃ¸bsperiode
+StudieforlÃ¸bFagelement "0..*" --  "0..1" StudieforlÃ¸bFagelementgruppering
+StudieforlÃ¸bFagelement "0..*" --  "0..1" FagelementIFagelementgruppering
+StudieforlÃ¸bFagelement "0..*" --  "1" Fagelement
+FagelementIStudieforlÃ¸bsperiode "0..*" --  "1" StudieforlÃ¸bFagelement
+StudieforlÃ¸bFagelement "1..*" --  "1" StudieforlÃ¸b
+PersonligtFagelement "0..*" --  "0..1" StudieforlÃ¸bFagelement
+StudieforlÃ¸bFagelementgruppering .right.>  ValgfrihedsgradEnum
+StudieforlÃ¸bFagelement .right.>  ValgfrihedsgradEnum
+StudieforlÃ¸bFagelementgruppering .right.>  AnvendelsestypeEnum
 !endsub
 
 !startsub 1_7_3_Studiepladskapacitet
@@ -2630,8 +2630,8 @@ class StudiepladskapacitetBachelor {
   standbykapacitetKvote1: Number.0 [[1..1]]
 }
 
-Studiepladskapacitet "0..1" --  "0..1" UdbudtStudieforløb : kan have begrænset kapacitet
-UdbudtVideregåendeUddannelseOgEnkeltfag "0..1" --  "0..1" Studiepladskapacitet : kan have begrænset kapacitet
+Studiepladskapacitet "0..1" --  "0..1" UdbudtStudieforlÃ¸b : kan have begrÃ¦nset kapacitet
+UdbudtVideregÃ¥endeUddannelseOgEnkeltfag "0..1" --  "0..1" Studiepladskapacitet : kan have begrÃ¦nset kapacitet
 StudiepladskapacitetBachelor --|>  Studiepladskapacitet
 !endsub
 
